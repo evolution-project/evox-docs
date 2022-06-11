@@ -1,0 +1,122 @@
+# Project information
+site_name: Evolution Documentation
+site_description: 'Official Evolution Coin Documentation'
+site_author: "ArtFix"
+site_url: 'https://docs.evolution-network.org'
+site_dir: 'public'
+
+copyright: '© 2022 EvolutionDocs under <a href="https://opensource.org/licenses/MIT">MIT</a>'
+
+nav:
+- Home: index.md
+- Technical specs: 'technical-specs.md'
+- API Documentation: 
+    - Daemon API docs: 'api-documentation/daemon-api.md'
+    - Wallet API docs: 'api-documentation/wallet-api.md'
+- Mining Guide:
+    - Solo mining: 'mining/solo-mining-guide.md'
+    - Proof Of Stake mining: 'mining/pos-mining.md'
+    - PoS Eanings: 'mining/pos-earning.md'
+- Exchange Guide:
+    - Daemon & Wallet RPC: 'exchange-guide/start-daemon-wall.md'
+    - Integrated address: 'exchange-guide/integrate-address.md'
+    - Exchange FAQ: 'exchange-guide/exchange-faq.md'
+- User Guide:
+    - Manage Wallet: 'user-guide/manage-wallet.md'
+    - Locked Balance: 'user-guide/locked-balance.md'
+    - Escrow Contracts: 'user-guide/escrow-contracts.md'
+    - Alias: 'user-guide/alias.md'
+    - Raport Issue: 'user-guide/raport-issue.md'
+    - Audible Wallet: 'user-guide/audible-wallet.md'
+    - DeepLinks: 'user-guide/deeplinks.md'
+- Market Place:
+    - Market API guide: 'market/market-api.md'
+- FAQ:
+    - Frequently Asked Questions: 'faq/faq.md'
+- Crypto Dictionar:
+    - Crypto Definitions: 'crypto-dictionar.md'
+
+
+#theme: windmill
+
+#theme: psinder
+#  name: null
+#  custom_dir: mkdocs-material/material
+
+#404 page
+#static_templates:
+#  - 404.html
+
+# Necessary for search to work properly
+#  include_search_page: false
+#  search_index_only: true
+
+#   Default values, taken from mkdocs_theme.yml
+#  language: en
+#  font:
+#    text: Roboto
+#    code: Roboto Mono
+#  favicon: assets/favicon.png
+
+#  palette:
+#    primary: white
+#    accent: indigo
+#  icon:
+#    logo: logo
+#    logo: 'images/evox.svg'
+
+
+
+#extra_css: ['overrides.css']
+
+repo_name: 'evolution-project/evox-docs'
+repo_url: 'https://github.com/evolution-project/evox-docs/'
+
+markdown_extensions:
+  # https://squidfunk.github.io/mkdocs-material/extensions/admonition/
+  - admonition
+  - abbr
+  - attr_list
+  - md_in_html
+  - def_list
+  - footnotes
+  - meta
+  - attr_list
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      use_pygments: true         # build time highlighting, not client side
+  - pymdownx.inlinehilite
+  - pymdownx.superfences         # nest code blocks inside codeblocks
+  - pymdownx.snippets            # insert content from other files
+
+plugins:
+  - search
+  - minify:
+      minify_html: true
+      minify_js: true
+      htmlmin_opts:
+        remove_comments: false
+
+theme:
+  #favicon: images/logo-site.png
+  #icon: 'images/favicon.ico'
+  #logo: images/logo-site.png
+  name: material
+  features:
+    - navigation.sections: false
+    - toc.integrate: false
+    - navigation.indexes: false
+  palette:
+#    - primary: deep purple
+    - media: "(prefers-color-scheme: dark)" 
+      scheme: default
+      toggle:
+        icon: material/lightbulb
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: light)" 
+      scheme: slate
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to light mode
