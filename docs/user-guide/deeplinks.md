@@ -1,7 +1,7 @@
 
 Based on materials of Matthew Reichardt me@matthewreichardt.com [Link to issue](https://github.com/hyle-team/zano/issues/269)
 
-### **Evox URI Scheme**
+### **EvoX URI Scheme**
 
 * `action` -- type of action requested 
 * supported actions:

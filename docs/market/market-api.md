@@ -1,13 +1,13 @@
 
-### Building distributed markets based on Evox
+### Building distributed markets based on EvoX
 
 * The EvoX blockchain will act as a platform for building distributed services. 
 * One of those services is our Marketplace, offering out of the box blockchain solutions.
-* With the Evox Marketplace you create, update, or deactivate offers.
+* With the EvoX Marketplace you create, update, or deactivate offers.
 * Offers contain information about a user who is selling or buying something.
 * As soon as an offer is published in the blockchain it is visible to everyone.
 * This feature allows developers to build a decentralized online stores, based on offers and escrow contracts.
-* The Evox daemon has built-in service, that can show all active offers from the blockchain as multi indexed set with diverse filtering options. 
+* The EvoX daemon has built-in service, that can show all active offers from the blockchain as multi indexed set with diverse filtering options. 
 * These offers are active for 2 weeks, after that, an offer needs to be re-posted.
 
 ### _Posting and updating offers_

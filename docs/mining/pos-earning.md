@@ -6,7 +6,7 @@
 * Here is the most straightforward way to do so.
 
     * First, we need to get the current PoS difficulty, which can be found in the [Block Explorer](https://chain.evolution-network.org). 
-        * This value is then divided by `1000000000000 (10 ^ 12)` , which in the Evox network is one coin basis.
+        * This value is then divided by `1000000000000 (10 ^ 12)` , which in the EvoX network is one coin basis.
 
     * Second, we again divide it by `288`. 
         * This operation lets us take the PoS mining timestamp frame into account.
@@ -23,10 +23,10 @@
 * Where `C` is the total amount of coins participating in PoS mining 
 * And `D_PoS` is the current PoS difficulty.
 
-* As you may know, the Evox network emits an average of `1 coin` each `minute` with a `50-50` spread between `PoS` and `PoW`. 
+* As you may know, the EvoX network emits an average of `1 coin` each `minute` with a `50-50` spread between `PoS` and `PoW`. 
 * That makes it `720` potential `PoS` reward coins per day. 
 * So if you owned all the coins in PoS, that could be your total day earnings. 
-* And if you divide `C` by `720`, you will get the number of coins you need to mine `1 Evox coin` a day. 
+* And if you divide `C` by `720`, you will get the number of coins you need to mine `1 EvoX coin` a day. 
 * Now, you can estimate the number of coins you will earn as 
 
         your_PoS_earnings = 720 * your_staking_coins / C 

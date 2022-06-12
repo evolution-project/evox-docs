@@ -1,8 +1,8 @@
 ### Proof Of Stake (POS)
 
 * Proof-of-stake mining or POS for short is typically implemented such that a random coin owner obtains the right to sign a new block. 
-* Evox `POS` implementation keeps miners in full anonymity and is as simple as a push of a button, literally.
-* Open Evox app, make sure the blockchain is synchronised and turn ON `Staking` switch.
+* EvoX `POS` implementation keeps miners in full anonymity and is as simple as a push of a button, literally.
+* Open EvoX app, make sure the blockchain is synchronised and turn ON `Staking` switch.
 * You can observe your progress in the `Staking` tab of your staking wallet. 
 * The amount of earnings depends on the wallet balance.  
 * When you turn `Staking` OFF, balance will get unlocked right away. 
@@ -17,7 +17,7 @@
 
 * Here are steps to achieve it.
 
-    1 . Build `Evox` daemon (evoxd executable) following instructions
+    1 . Build `EvoX` daemon (evoxd executable) following instructions
     
     2 . Navigate to `Evox` folder
     

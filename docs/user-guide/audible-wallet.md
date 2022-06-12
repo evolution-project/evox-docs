@@ -25,7 +25,7 @@
 ```    
 >simplewallet.exe --generate-new-auditable-wallet auditable_wallet_x
     
-Evox wallet v1.1.7[3e463b0]
+EvoX wallet v1.1.7[3e463b0]
 
 password: ***
 Generated new AUDITABLE wallet: aEXb9v1DFtaK6Z4bW7UUuaZcmq7MZBzz875eZ5N3vSRa2vWz9wBVE3vVKFGNH8414TTjhiwPz7PTV5ttuZP7GsdDQeWbewpmMaX
@@ -46,7 +46,7 @@ Your wallet has been generated.
 ```
 >simplewallet.exe --wallet-file auditable_wallet_x
 
-Evox wallet v1.1.7.96[3e463b0]
+EvoX wallet v1.1.7.96[3e463b0]
 
 password: ***
 Opened auditable wallet: aEXb9v1DFtaK6Z4bW7UUuaZcmq7MZBzz875eZ5N3vSRa2vWz9wBVE3vVKFGNH8414TTjhiwPz7PTV5ttuZP7GsdDQeWbewpmMaX
@@ -57,7 +57,7 @@ balance: 0.000000000000, unlocked balance: 0.000000000000
 Use "help" command to see the list of available commands.
 **********************************************************************
 
-[Evox wallet aEXb9v]: tracking_seed
+[EvoX wallet aEXb9v]: tracking_seed
 
 Auditable watch-only tracking seed for this wallet is:
 aEXb9v1DFtaK6Z4bW7UUuaZcmq7MZBzz875eZ5N3vSRa2vWz9wBVE3vVKFGNH8414TTjhiwPz7PTV5ttuZP7GsdDQeWbewpmMaX:3dd8fd870c694818194c1e7a095a51e2e65486e212baca77fce4157f39287f05:1595429852 
@@ -79,7 +79,7 @@ aZxawNXAuekCXcnzutthLaPZQxAyaofb59FpzNBSCQb7iT7D1nsaxdTCvK4Xhn6nfuRpqDiNjeUNx2J9
 ```
 >simplewallet.exe --restore-wallet=wallet-name
 
-Evox wallet v1.1.7[3e463b0]
+EvoX wallet v1.1.7[3e463b0]
 
 password: ***
 please, enter wallet seed phrase or an auditable wallet's tracking seed: ***
@@ -106,7 +106,6 @@ your wallet again. Your wallet keys is NOT under risk anyway.
 
     The following limitations were effective until `hardfork 2`:
 
-        * An alias cannot be assigned to an auditable address.
         * When sending coins from an auditable address the sender address is always hidden.
         * When sending coins to an auditable address the receiver address is always hidden.
-        * Once the blockchain passed hardfork 2 these limitations were removed.
+        Once the blockchain passed hardfork 2 these limitations were removed.
