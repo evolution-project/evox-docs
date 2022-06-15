@@ -14,9 +14,9 @@
 evoxd --rpc-bind-ip RPC_IP --rpc-bind-port RPC_PORT
 ```
 
-* RPC_IP — IP address to bind RPC server to (`127.0.0.1` will be used if not specified);
+* `RPC_IP` — IP address to bind RPC server to (`127.0.0.1` will be used if not specified);
 
-* RPC_PORT — TCP port for RPC server (`52521` is default);
+* `RPC_PORT` — TCP port for RPC server (`52521` is default);
 
 * All examples below are based on the assumption that the daemon is listening for RPC at `127.0.0.1:52521`.
 

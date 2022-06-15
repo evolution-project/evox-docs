@@ -39,3 +39,10 @@
 
 !!! note
         Please keep in mind that all the above is an expectation and can vary heavily.
+
+<br>
+
+### _More detalied PoS scheme_
+
+![Image title](/images/Scheme_PoS_mining2.png)
+![Image title](/images/Scheme_PoS_mining1.png)
