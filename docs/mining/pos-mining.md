@@ -1,15 +1,13 @@
 ### Proof Of Stake (POS)
 
 * Proof-of-stake mining or POS for short is typically implemented such that a random coin owner obtains the right to sign a new block. 
-* EvoX `POS` implementation keeps miners in full anonymity and is as simple as a push of a button, literally.
+* EvoX `POS` implementation keep miners in full anonymity and simple with a push of a button.
 * Open EvoX app, make sure the blockchain is synchronised and turn ON `Staking` switch.
 * You can observe your progress in the `Staking` tab of your staking wallet. 
-* The amount of earnings depends on the wallet balance.  
+* The amount of earnings depends on the wallet balance.
+* Amount of earnings depends also of how many user are running PoS.
 * When you turn `Staking` OFF, balance will get unlocked right away. 
 * You can switch `Staking` ON and OFF without any limitations.
-
-!!! note
-    Note that funds, that participate in proof-of-stake will be locked.
 
 ### _Server mode POS mining_
 
@@ -34,4 +32,4 @@
     * `12233` -- port of your choice, e.g. 12233
 
 !!! note
-        Now this wallet participates in proof-of-stake mining.
+        Now this wallet now participates in proof-of-stake mining.

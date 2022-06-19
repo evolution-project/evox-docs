@@ -8,7 +8,7 @@
 
 * The goal is to educate and onboard power users faster.
 
-* Please submit your feedback and corrections directly on [GitHub](https://github.com/evolution-project/evoxdocs/issues).
+* Please submit your feedback and corrections directly on [GitHub](https://github.com/evolution-project/evox-docs/issues).
 
 * Contact ArtFix [ artfix@protonmail.com ]
 
