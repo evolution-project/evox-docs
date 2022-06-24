@@ -3,85 +3,71 @@ title: Evolution Technical Specification
 ---
 # Evolution Technical Specs
 
-## Live
+|                              | **Coin Specification** |                                                          |
+| ---------------------------- |                        |--------------------------------------------------------- |
+| **Currencie Name**           |    _   | Evolution                                                                |
+| **Ticker**                   |    _   | EVOX                                                                     |
+| **PoW Algorithm**            |    _   | ProgPowZ - GPU (optimised) + CPU mining                                  |
+| **Hybrid Blockchain**        |    _   | PoW + PoS                                                                |
+| **Block Reward**             |    _   | 1 EvoX - PoS / PoW                                                       |
+| **Network Fee**              |    _   | fixed 0.01 EvoX                                                          |
+| **Minimum Network Fee / TX** |    _   | fixed 0.01 EvoX                                                          |
+| **Maximum Supply**           |    _   | ∞ infinite supply                                                        |
+| **Development Reserved**     |    _   | 100000 EvoX, 70000 spend on development till now.                        |
+| **Website**                  |    _   | [Evolution-Network.org](https://evolution-network.org)                   |
+| **BlockChain Explorer**      |    _   | [Explorer.Evolution-Network.org](https://explorer.evolution-network.org) |
+| **GitHub**                   |    _   | [EvoX GitHub](https://github.com/evolution-project)                      |
 
-* Evolution blockchain is live since:
-Timestamp [UCT] (epoch)
-2020-03-02 21:31:47 (1583184707) 
+### **_Live_**
 
-## Premine
+* _Evolution blockchain is live since: Timestamp [UCT] (epoch) 2020-03-02 21:31:47 (1583184707)_
+* _Evolution 2.0 blockchain started: ......_
 
-* Evolution had premine of 100.000 EVOX
-* They where spend on airdrop and exchanges
-* Evolution had no presale of any kind
+### **_Hybrid_**
 
-## Proof of Work
+* _PoS_ - Proof of Stake
+* _PoW_ - Proof of Work
+* _PoW Algorithm_ : ProgpowZ
 
-* RandomARQ
-    * v0 since block height 1 (forked from ARQMA)
+### **_Block time_**
 
-## Difficulty retarget
+* _60 seconds_ (1 minutes)
+* _PoS / PoW_ - may varry
 
-* every block
+### **_Block reward_**
 
-## Block time
+* _EvoX have fixed number of coins reward per block._
+* PoS - 1 EvoX / block
+* PoW - 1 EvoX / block 
+    * Check [EvoX Blockchain](https://explorer.evolution-network.org/)
 
-* 120 seconds (2 minutes)
-* may varry
+### **_EvoX Emission_**
 
-## Block reward
+* The main emission is infinite mining.
 
-* smoothly decreasing and subject to penalties for blocks greater then median size of the last 100 blocks (M100)
-* ~21.543 EvoX as of Sept 2021; for the current reward check the Evolution [Blockchain](https://explorer.evolution-network.org/)
+### **_Max Supply_**
 
-## Block size
+* ∞ Infinite, uncapped
 
-* dynamic
-* maximum of two times the median size of the last 100 blocks (2 * M100)
+### **_Divisibility_**
 
-## Emission curve
+* Evolution is divisible up to 12 digits.
+* The smallest unit equals `1e-12` or `0.000000000001` EvoX
 
-* Planed for 20 years
+### **_Sender Privacy_**
 
-### Main emission
+* _Ring Signatures_
+    * The ring size is 10 (9 decoys)
+    * Private by default and Audible wallets
 
-* The main emission is about to produce ~55 million coins by the end of .....
+### **_Recipient Privacy_**
 
-## Max supply
+* Stealth Addresses
+* Assurance: _strong_
 
-* ~55 million EVOX 
+### **_Amount Privacy_**
 
-## Divisibility
+* Ring Confidential Transactions _(ringCT)_
+* Assurance: _strong_
 
-* Evolution is divisible up to 9 digits
-* The smallest unit equals 1e-9 EVOX, or 0.00000001 EVOX
 
-## Sender privacy
-
-* ring signatures
-    * the ring size is 11 (10 decoys)
-* assurance: probabilistic / plausible deniability
-
-## Recipient privacy
-
-* stealth addresses
-* assurance: strong
-
-## Amount privacy
-
-* ring confidential transactions
-* assurance: strong
-
-## IP address privacy
-
-For the full node (`evolutiond`):
-
-* dandelion++
-* assurance: won't protect against ISP/VPN provider, won't protect against the very first remote node in Dandellion++ protocol
-* for the full protection user must manually wrap `evolutiond` with Tor
-
-For the wallet (`evolution-electron-gui` or `evolution-wallet-cli`):
-
-* typically wallet runs on the same machine as full node so there is no risk
-* if wallet connects to remote full node, there is no IP protection by default
-    * user must protect himself
