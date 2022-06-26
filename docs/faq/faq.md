@@ -46,7 +46,7 @@
 
 ### **Is EvoX a hardfork of Zano?**
 
-* Yes, hardfork of Zano.
+* Yes
 
 <br>
 

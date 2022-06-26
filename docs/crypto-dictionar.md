@@ -32,6 +32,10 @@
 
 * Atomic swaps are a mechanism where one cryptocurrency can be exchanged directly for another cryptocurrency, without the need for a trusted third party such as an exchange.
 
+### **Alias**
+
+* Human readable name associated with a payment address and text comment, which is stored in the blockchain.
+
 ### **Blockchain**
 
 * A system (ledger) in which a record of transactions made in cryptocurrency are maintained across several computers that are linked in a peer-to-peer network.
@@ -78,10 +82,6 @@
 
 * A digital signature is a mathematical scheme for verifying the authenticity of digital messages or documents. A valid digital signature, where the prerequisites are satisfied, gives a recipient very strong reason to believe that the message was created by a known sender (authentication), and that the message was not altered in transit (integrity).
 
-### **Distributed ledger**
-
-* A system of independent computers that are simultaneously recording data. With distributed ledger technology, identical copies of the recording are kept by each computer.
-
 ### **Double-spending**
 
 * A form of deceit using digital money where the same money is promised to two parties but only delivered to one. If completed successfully, one of the two recipients will not be paid.
@@ -94,14 +94,6 @@
 
 * Cryptocurrency exchanges allow customers to trade cryptocurrencies for other assets, such as conventional fiat money, or to trade between different digital currencies.
 
-### **Futures**
-
-* A futures contract is a legal agreement to buy or sell a particular commodity or asset at a predetermined price at a specified time in the future. Futures contracts are standardized for quality and quantity to facilitate trading on a futures exchange.
-
-### **Gas price**
-
-* A very small amount of ethereum and it is multiplied by an amount known as gas limit to pay people to record transactions and do other software actions.
-
 ### **Genesis Block**
 
 * A blockchain is a digital book of records where each new page made in that book is what is known as a “block”. Those blocks are connected in one group known as the blockchain. The first block in a blockchain is known as the genesis block.
@@ -113,10 +105,6 @@
 ### **Hash Rate**
 
 * The speed at which a computer can take any set of information and turn it into letters and numbers of a certain length, known as a “hash”. Hash rate is also the combined hash speed of every computer in the network. Hash rate is calculated at hashes per second (h/s).
-
-### **Initial Coin Offering or ICO**
-
-* A time-sensitive process when a new cryptocurrency or token generally becomes available for the public to invest in.
 
 ### **Know Your Customer [KYC]**
 

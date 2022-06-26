@@ -1,6 +1,8 @@
 
 * If you experience any technical issues we suggest you make a report to our development team.
 
+* [Raport issue here](https://github.com/evolution-project/evox-docs/issues)
+
 ### Log files
 
 * In most cases log files are essential for troubleshooting.

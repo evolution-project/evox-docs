@@ -9,9 +9,11 @@ title: Evolution Technical Specification
 | **Ticker**                   |    _   | EVOX                                                                     |
 | **PoW Algorithm**            |    _   | ProgPowZ - GPU (optimised) + CPU mining                                  |
 | **Hybrid Blockchain**        |    _   | PoW + PoS                                                                |
+| **Block Time**               |    _   | 60 sec PoW / PoS (may vary)
 | **Block Reward**             |    _   | 1 EvoX - PoS / PoW                                                       |
-| **Network Fee**              |    _   | fixed 0.01 EvoX                                                          |
-| **Minimum Network Fee / TX** |    _   | fixed 0.01 EvoX                                                          |
+| **Network Fee**              |    _   | 0.01 EvoX - Fixed                                                        |
+| **Minimum Network Fee / TX** |    _   | 0.01 EvoX - Fixed                                                        |
+| **Decimal Points**           |    _   | `1e-12` or 0.000000000001                                                |
 | **Maximum Supply**           |    _   | ∞ infinite supply                                                        |
 | **Development Reserved**     |    _   | 100000 EvoX, 70000 spend on development till now.                        |
 | **Website**                  |    _   | [Evolution-Network.org](https://evolution-network.org)                   |
@@ -29,35 +31,10 @@ title: Evolution Technical Specification
 * _PoW_ - Proof of Work
 * _PoW Algorithm_ : ProgpowZ
 
-### **_Block time_**
-
-* _60 seconds_ (1 minutes)
-* _PoS / PoW_ - may varry
-
-### **_Block reward_**
-
-* _EvoX have fixed number of coins reward per block._
-* PoS - 1 EvoX / block
-* PoW - 1 EvoX / block 
-    * Check [EvoX Blockchain](https://explorer.evolution-network.org/)
-
-### **_EvoX Emission_**
-
-* The main emission is infinite mining.
-
-### **_Max Supply_**
-
-* ∞ Infinite, uncapped
-
-### **_Divisibility_**
-
-* Evolution is divisible up to 12 digits.
-* The smallest unit equals `1e-12` or `0.000000000001` EvoX
-
 ### **_Sender Privacy_**
 
 * _Ring Signatures_
-    * The ring size is 10 (9 decoys)
+    * The ring size is 11 (10 decoys)
     * Private by default and Audible wallets
 
 ### **_Recipient Privacy_**

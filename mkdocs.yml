@@ -23,12 +23,12 @@ nav:
     - Exchange FAQ: 'exchange-guide/exchange-faq.md'
 - User Guide:
     - Manage Wallet: 'user-guide/manage-wallet.md'
-    - Locked Balance: 'user-guide/locked-balance.md'
-    - Escrow Contracts: 'user-guide/escrow-contracts.md'
     - Alias: 'user-guide/alias.md'
-    - Raport Issue: 'user-guide/raport-issue.md'
     - Audible Wallet: 'user-guide/audible-wallet.md'
     - DeepLinks: 'user-guide/deeplinks.md'
+    - Escrow Contracts: 'user-guide/escrow-contracts.md'
+    - Locked Balance: 'user-guide/locked-balance.md'
+    - Raport Issue: 'user-guide/raport-issue.md'
 - Market Place:
     - Market API guide: 'market/market-api.md'
 - FAQ:
