@@ -1,0 +1,923 @@
+<!doctype html><html lang=en class=no-js> <head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Official Evolution Coin Documentation"><meta name=author content=ArtFix><link href=https://docs.evolution-network.org/api/daemon-rpc-api/ rel=canonical><link rel=icon href=../../assets/images/favicon.png><meta name=generator content="mkdocs-1.3.0, mkdocs-material-8.3.3"><title>Daemon RPC API - Evolution Documentation</title><link rel=stylesheet href=../../assets/stylesheets/main.4a0965b7.min.css><link rel=stylesheet href=../../assets/stylesheets/palette.cbb835fc.min.css><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback"><style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style><script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script></head> <body dir=ltr data-md-color-scheme=default data-md-color-primary data-md-color-accent> <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script> <input class=md-toggle data-md-toggle=drawer type=checkbox id=__drawer autocomplete=off> <input class=md-toggle data-md-toggle=search type=checkbox id=__search autocomplete=off> <label class=md-overlay for=__drawer></label> <div data-md-component=skip> <a href=#1-getblockcount class=md-skip> Skip to content </a> </div> <div data-md-component=announce> </div> <header class=md-header data-md-component=header> <nav class="md-header__inner md-grid" aria-label=Header> <a href=../.. title="Evolution Documentation" class="md-header__button md-logo" aria-label="Evolution Documentation" data-md-component=logo> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg> </a> <label class="md-header__button md-icon" for=__drawer> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg> </label> <div class=md-header__title data-md-component=header-title> <div class=md-header__ellipsis> <div class=md-header__topic> <span class=md-ellipsis> Evolution Documentation </span> </div> <div class=md-header__topic data-md-component=header-topic> <span class=md-ellipsis> Daemon RPC API </span> </div> </div> </div> <form class=md-header__option data-md-component=palette> <input class=md-option data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme=default data-md-color-primary data-md-color-accent aria-label="Switch to dark mode" type=radio name=__palette id=__palette_1> <label class="md-header__button md-icon" title="Switch to dark mode" for=__palette_2 hidden> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg> </label> <input class=md-option data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme=slate data-md-color-primary data-md-color-accent aria-label="Switch to light mode" type=radio name=__palette id=__palette_2> <label class="md-header__button md-icon" title="Switch to light mode" for=__palette_1 hidden> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg> </label> </form> <label class="md-header__button md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg> </label> <div class=md-search data-md-component=search role=dialog> <label class=md-search__overlay for=__search></label> <div class=md-search__inner role=search> <form class=md-search__form name=search> <input type=text class=md-search__input name=query aria-label=Search placeholder=Search autocapitalize=off autocorrect=off autocomplete=off spellcheck=false data-md-component=search-query required> <label class="md-search__icon md-icon" for=__search> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg> </label> <nav class=md-search__options aria-label=Search> <button type=reset class="md-search__icon md-icon" aria-label=Clear tabindex=-1> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg> </button> </nav> </form> <div class=md-search__output> <div class=md-search__scrollwrap data-md-scrollfix> <div class=md-search-result data-md-component=search-result> <div class=md-search-result__meta> Initializing search </div> <ol class=md-search-result__list></ol> </div> </div> </div> </div> </div> <div class=md-header__source> <a href=https://github.com/evolution-project/evox-docs/ title="Go to repository" class=md-source data-md-component=source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><!-- Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg> </div> <div class=md-source__repository> evolution-project/evox-docs </div> </a> </div> </nav> </header> <div class=md-container data-md-component=container> <main class=md-main data-md-component=main> <div class="md-main__inner md-grid"> <div class="md-sidebar md-sidebar--primary" data-md-component=sidebar data-md-type=navigation> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--primary" aria-label=Navigation data-md-level=0> <label class=md-nav__title for=__drawer> <a href=../.. title="Evolution Documentation" class="md-nav__button md-logo" aria-label="Evolution Documentation" data-md-component=logo> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg> </a> Evolution Documentation </label> <div class=md-nav__source> <a href=https://github.com/evolution-project/evox-docs/ title="Go to repository" class=md-source data-md-component=source> <div class="md-source__icon md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 448 512"><!-- Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg> </div> <div class=md-source__repository> evolution-project/evox-docs </div> </a> </div> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../.. class=md-nav__link> Home </a> </li> <li class=md-nav__item> <a href=../../technical-specs/ class=md-nav__link> Technical specs </a> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_3 type=checkbox id=__nav_3> <label class=md-nav__link for=__nav_3> API Documentation <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label="API Documentation" data-md-level=1> <label class=md-nav__title for=__nav_3> <span class="md-nav__icon md-icon"></span> API Documentation </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../api-documentation/daemon-api/ class=md-nav__link> Daemon API docs </a> </li> <li class=md-nav__item> <a href=../../api-documentation/wallet-api/ class=md-nav__link> Wallet API docs </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_4 type=checkbox id=__nav_4> <label class=md-nav__link for=__nav_4> Mining Guide <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label="Mining Guide" data-md-level=1> <label class=md-nav__title for=__nav_4> <span class="md-nav__icon md-icon"></span> Mining Guide </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../mining/solo-mining-guide/ class=md-nav__link> Solo mining </a> </li> <li class=md-nav__item> <a href=../../mining/pos-mining/ class=md-nav__link> Proof Of Stake mining </a> </li> <li class=md-nav__item> <a href=../../mining/pos-earning/ class=md-nav__link> PoS Eanings </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_5 type=checkbox id=__nav_5> <label class=md-nav__link for=__nav_5> Exchange Guide <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label="Exchange Guide" data-md-level=1> <label class=md-nav__title for=__nav_5> <span class="md-nav__icon md-icon"></span> Exchange Guide </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../exchange-guide/start-daemon-wall/ class=md-nav__link> Daemon & Wallet RPC </a> </li> <li class=md-nav__item> <a href=../../exchange-guide/integrate-address/ class=md-nav__link> Integrated address </a> </li> <li class=md-nav__item> <a href=../../exchange-guide/exchange-faq/ class=md-nav__link> Exchange FAQ </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_6 type=checkbox id=__nav_6> <label class=md-nav__link for=__nav_6> User Guide <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label="User Guide" data-md-level=1> <label class=md-nav__title for=__nav_6> <span class="md-nav__icon md-icon"></span> User Guide </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../user-guide/manage-wallet/ class=md-nav__link> Manage Wallet </a> </li> <li class=md-nav__item> <a href=../../user-guide/alias/ class=md-nav__link> Alias </a> </li> <li class=md-nav__item> <a href=../../user-guide/audible-wallet/ class=md-nav__link> Audible Wallet </a> </li> <li class=md-nav__item> <a href=../../user-guide/deeplinks/ class=md-nav__link> DeepLinks </a> </li> <li class=md-nav__item> <a href=../../user-guide/escrow-contracts/ class=md-nav__link> Escrow Contracts </a> </li> <li class=md-nav__item> <a href=../../user-guide/locked-balance/ class=md-nav__link> Locked Balance </a> </li> <li class=md-nav__item> <a href=../../user-guide/raport-issue/ class=md-nav__link> Raport Issue </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_7 type=checkbox id=__nav_7> <label class=md-nav__link for=__nav_7> Market Place <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label="Market Place" data-md-level=1> <label class=md-nav__title for=__nav_7> <span class="md-nav__icon md-icon"></span> Market Place </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../market/market-api/ class=md-nav__link> Market API guide </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_8 type=checkbox id=__nav_8> <label class=md-nav__link for=__nav_8> FAQ <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label=FAQ data-md-level=1> <label class=md-nav__title for=__nav_8> <span class="md-nav__icon md-icon"></span> FAQ </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../faq/faq/ class=md-nav__link> Frequently Asked Questions </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_9 type=checkbox id=__nav_9> <label class=md-nav__link for=__nav_9> Crypto Dictionar <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label="Crypto Dictionar" data-md-level=1> <label class=md-nav__title for=__nav_9> <span class="md-nav__icon md-icon"></span> Crypto Dictionar </label> <ul class=md-nav__list data-md-scrollfix> <li class=md-nav__item> <a href=../../crypto-dictionar/ class=md-nav__link> Crypto Definitions </a> </li> </ul> </nav> </li> <li class="md-nav__item md-nav__item--active md-nav__item--nested"> <input class="md-nav__toggle md-toggle" data-md-toggle=__nav_10 type=checkbox id=__nav_10 checked> <label class=md-nav__link for=__nav_10> API Detailed <span class="md-nav__icon md-icon"></span> </label> <nav class=md-nav aria-label="API Detailed" data-md-level=1> <label class=md-nav__title for=__nav_10> <span class="md-nav__icon md-icon"></span> API Detailed </label> <ul class=md-nav__list data-md-scrollfix> <li class="md-nav__item md-nav__item--active"> <input class="md-nav__toggle md-toggle" data-md-toggle=toc type=checkbox id=__toc> <label class="md-nav__link md-nav__link--active" for=__toc> Daemon RPC API <span class="md-nav__icon md-icon"></span> </label> <a href=./ class="md-nav__link md-nav__link--active"> Daemon RPC API </a> <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> <label class=md-nav__title for=__toc> <span class="md-nav__icon md-icon"></span> Table of contents </label> <ul class=md-nav__list data-md-component=toc data-md-scrollfix> <li class=md-nav__item> <a href=#1-getblockcount class=md-nav__link> 1. getblockcount </a> </li> <li class=md-nav__item> <a href=#2-on_getblockhash class=md-nav__link> 2. on_getblockhash </a> </li> <li class=md-nav__item> <a href=#3-getblocktemplate class=md-nav__link> 3. getblocktemplate </a> </li> <li class=md-nav__item> <a href=#4-submitblock class=md-nav__link> 4. submitblock </a> </li> <li class=md-nav__item> <a href=#5-getlastblockheader class=md-nav__link> 5. getlastblockheader </a> </li> <li class=md-nav__item> <a href=#6-getblockheaderbyhash class=md-nav__link> 6. getblockheaderbyhash </a> </li> <li class=md-nav__item> <a href=#7-getblockheaderbyheight class=md-nav__link> 7. getblockheaderbyheight </a> </li> <li class=md-nav__item> <a href=#8-get_alias_details class=md-nav__link> 8. get_alias_details </a> </li> <li class=md-nav__item> <a href=#9-get_alias_by_address class=md-nav__link> 9. get_alias_by_address </a> </li> <li class=md-nav__item> <a href=#10-get_alias_reward class=md-nav__link> 10. get_alias_reward </a> </li> <li class=md-nav__item> <a href=#11-get_blocks_details class=md-nav__link> 11. get_blocks_details </a> </li> <li class=md-nav__item> <a href=#12-get_tx_details class=md-nav__link> 12. get_tx_details </a> </li> <li class=md-nav__item> <a href=#13-search_by_id class=md-nav__link> 13. search_by_id </a> </li> <li class=md-nav__item> <a href=#14-getinfo class=md-nav__link> 14. getinfo </a> </li> <li class=md-nav__item> <a href=#15-get_out_info class=md-nav__link> 15. get_out_info </a> </li> <li class=md-nav__item> <a href=#16-get_multisig_info class=md-nav__link> 16. get_multisig_info </a> </li> <li class=md-nav__item> <a href=#17-get_all_alias_details class=md-nav__link> 17. get_all_alias_details </a> </li> <li class=md-nav__item> <a href=#18-get_aliases class=md-nav__link> 18. get_aliases </a> </li> <li class=md-nav__item> <a href=#19-get_pool_txs_details class=md-nav__link> 19. get_pool_txs_details </a> </li> <li class=md-nav__item> <a href=#20-get_pool_txs_brief_details class=md-nav__link> 20. get_pool_txs_brief_details </a> </li> <li class=md-nav__item> <a href=#21-get_all_pool_tx_list class=md-nav__link> 21. get_all_pool_tx_list </a> </li> <li class=md-nav__item> <a href=#22-get_main_block_details class=md-nav__link> 22. get_main_block_details </a> </li> <li class=md-nav__item> <a href=#23-get_alt_block_details class=md-nav__link> 23. get_alt_block_details </a> </li> <li class=md-nav__item> <a href=#24-get_alt_blocks_details class=md-nav__link> 24. get_alt_blocks_details </a> </li> <li class=md-nav__item> <a href=#25-reset_transaction_pool class=md-nav__link> 25. reset_transaction_pool </a> </li> <li class=md-nav__item> <a href=#26-get_current_core_tx_expiration_median class=md-nav__link> 26. get_current_core_tx_expiration_median </a> </li> <li class=md-nav__item> <a href=#27-marketplace_global_get_offers_ex class=md-nav__link> 27. marketplace_global_get_offers_ex </a> </li> </ul> </nav> </li> <li class=md-nav__item> <a href=../daemon-legacy-rpc-api/ class=md-nav__link> Daemon Legacy PRC API </a> </li> <li class=md-nav__item> <a href=../daemon-binary-rpc-api/ class=md-nav__link> Daemon Binary RPC API </a> </li> <li class=md-nav__item> <a href=../wallet-json-rpc-api/ class=md-nav__link> Wallet JSON RPC API </a> </li> <li class=md-nav__item> <a href=../marketplace-offer-structure-and-description/ class=md-nav__link> Marketplace offer structure and description </a> </li> <li class=md-nav__item> <a href=../marketplace-filter-structure-and-description/ class=md-nav__link> MarketPlace filter structure and description </a> </li> </ul> </nav> </li> </ul> </nav> </div> </div> </div> <div class="md-sidebar md-sidebar--secondary" data-md-component=sidebar data-md-type=toc> <div class=md-sidebar__scrollwrap> <div class=md-sidebar__inner> <nav class="md-nav md-nav--secondary" aria-label="Table of contents"> <label class=md-nav__title for=__toc> <span class="md-nav__icon md-icon"></span> Table of contents </label> <ul class=md-nav__list data-md-component=toc data-md-scrollfix> <li class=md-nav__item> <a href=#1-getblockcount class=md-nav__link> 1. getblockcount </a> </li> <li class=md-nav__item> <a href=#2-on_getblockhash class=md-nav__link> 2. on_getblockhash </a> </li> <li class=md-nav__item> <a href=#3-getblocktemplate class=md-nav__link> 3. getblocktemplate </a> </li> <li class=md-nav__item> <a href=#4-submitblock class=md-nav__link> 4. submitblock </a> </li> <li class=md-nav__item> <a href=#5-getlastblockheader class=md-nav__link> 5. getlastblockheader </a> </li> <li class=md-nav__item> <a href=#6-getblockheaderbyhash class=md-nav__link> 6. getblockheaderbyhash </a> </li> <li class=md-nav__item> <a href=#7-getblockheaderbyheight class=md-nav__link> 7. getblockheaderbyheight </a> </li> <li class=md-nav__item> <a href=#8-get_alias_details class=md-nav__link> 8. get_alias_details </a> </li> <li class=md-nav__item> <a href=#9-get_alias_by_address class=md-nav__link> 9. get_alias_by_address </a> </li> <li class=md-nav__item> <a href=#10-get_alias_reward class=md-nav__link> 10. get_alias_reward </a> </li> <li class=md-nav__item> <a href=#11-get_blocks_details class=md-nav__link> 11. get_blocks_details </a> </li> <li class=md-nav__item> <a href=#12-get_tx_details class=md-nav__link> 12. get_tx_details </a> </li> <li class=md-nav__item> <a href=#13-search_by_id class=md-nav__link> 13. search_by_id </a> </li> <li class=md-nav__item> <a href=#14-getinfo class=md-nav__link> 14. getinfo </a> </li> <li class=md-nav__item> <a href=#15-get_out_info class=md-nav__link> 15. get_out_info </a> </li> <li class=md-nav__item> <a href=#16-get_multisig_info class=md-nav__link> 16. get_multisig_info </a> </li> <li class=md-nav__item> <a href=#17-get_all_alias_details class=md-nav__link> 17. get_all_alias_details </a> </li> <li class=md-nav__item> <a href=#18-get_aliases class=md-nav__link> 18. get_aliases </a> </li> <li class=md-nav__item> <a href=#19-get_pool_txs_details class=md-nav__link> 19. get_pool_txs_details </a> </li> <li class=md-nav__item> <a href=#20-get_pool_txs_brief_details class=md-nav__link> 20. get_pool_txs_brief_details </a> </li> <li class=md-nav__item> <a href=#21-get_all_pool_tx_list class=md-nav__link> 21. get_all_pool_tx_list </a> </li> <li class=md-nav__item> <a href=#22-get_main_block_details class=md-nav__link> 22. get_main_block_details </a> </li> <li class=md-nav__item> <a href=#23-get_alt_block_details class=md-nav__link> 23. get_alt_block_details </a> </li> <li class=md-nav__item> <a href=#24-get_alt_blocks_details class=md-nav__link> 24. get_alt_blocks_details </a> </li> <li class=md-nav__item> <a href=#25-reset_transaction_pool class=md-nav__link> 25. reset_transaction_pool </a> </li> <li class=md-nav__item> <a href=#26-get_current_core_tx_expiration_median class=md-nav__link> 26. get_current_core_tx_expiration_median </a> </li> <li class=md-nav__item> <a href=#27-marketplace_global_get_offers_ex class=md-nav__link> 27. marketplace_global_get_offers_ex </a> </li> </ul> </nav> </div> </div> </div> <div class=md-content data-md-component=content> <article class="md-content__inner md-typeset"> <a href=https://github.com/evolution-project/evox-docs/edit/master/docs/api/daemon-rpc-api.md title="Edit this page" class="md-content__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg> </a> <h1>Daemon RPC API</h1> <h2 id=1-getblockcount>1. <em>getblockcount</em><a class=headerlink href=#1-getblockcount title="Permanent link">&para;</a></h2> <p><code>GET</code> http://127.0.0.1:52521/json_rpc/#001</p> <ul> <li>Retrieves the current number of blocks in the main chain — the longest chain known to this node.</li> </ul> <p><strong>REQUEST</strong></p> <div class=highlight><pre><span></span><code>curl --data &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;id\&quot;:0,\&quot;method\&quot;:\&quot;getblockcount\&quot;}&quot; -H &quot;content-type:application/json;&quot; http://127.0.0.1:52521/json_rpc
+</code></pre></div> <p><strong>RESPONSE</strong></p> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: &quot;0&quot;,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;count&quot;: 1535,
+    &quot;status&quot;: &quot;OK&quot;
+  }
+}
+</code></pre></div> <ul> <li> <p>Outputs:</p> <p>count — unsigned integer; total number of blocks in the blockchain, including genesis block at height zero.</p> </li> </ul> <h2 id=2-on_getblockhash>2. <em>on_getblockhash</em><a class=headerlink href=#2-on_getblockhash title="Permanent link">&para;</a></h2> <p><code>GET</code> http://127.0.0.1:52521/json_rpc/#002</p> <ul> <li>Obtains block hash by given block height.</li> </ul> <p><strong>REQUEST</strong></p> <div class=highlight><pre><span></span><code>curl --data &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;id\&quot;:0,\&quot;method\&quot;:\&quot;on_getblockhash\&quot;,\&quot;params\&quot;:[0]}&quot; -H &quot;content-type:application/json;&quot; http://127.0.0.1:52521/json_rpc
+</code></pre></div> <p><strong>RESPONSE</strong></p> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: &quot;0&quot;,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: &quot;cc608f59f8080e2fbfe3c8c80eb6e6a953d47cf2d6aebd345bada3a1cab99852&quot;
+}
+</code></pre></div> <ul> <li> <p>Outputs:</p> <p>string; standard public address of the wallet.</p> </li> </ul> <div class="admonition note"> <p class=admonition-title>Note</p> <p>Body Params</p> <p>block height <code>array of integers</code> required</p> <ul> <li>Array of 1 unsigned integer; block height.</li> </ul> </div> <h2 id=3-getblocktemplate>3. <em>getblocktemplate</em><a class=headerlink href=#3-getblocktemplate title="Permanent link">&para;</a></h2> <p><code>GET</code> http://127.0.0.1:52521/json_rpc/#003</p> <ul> <li>Creates a template for the next block.</li> </ul> <p><strong>REQUEST</strong></p> <div class=highlight><pre><span></span><code>curl --data &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;id\&quot;:0,\&quot;method\&quot;:\&quot;getblocktemplate\&quot;,\&quot;params\&quot;:{\&quot;extra_text\&quot;:\&quot;miner comment\&quot;,\&quot;wallet_address\&quot;:\&quot;eXBvJDuQjMG9R2j4WnYUhBYNrwZPwuyXrC7FHdVmWqaESgowDvgfWtiXeNGu8Px9B24pkmjsA39fzSSiEQG1ekB225ZnrMTBp\&quot;,\&quot;stakeholder_address\&quot;:\&quot;eXBvJDuQjMG9R2j4WnYUhBYNrwZPwuyXrC7FHdVmWqaESgowDvgfWtiXeNGu8Px9B24pkmjsA39fzSSiEQG1ekB225ZnrMTBp\&quot;,\&quot;pos_block\&quot;: false,\&quot;pos_amount\&quot;: 0,\&quot;pos_index\&quot;: 0}}&quot; -H &quot;content-type:application/json;&quot; http://127.0.0.1:52521/json_rpc
+</code></pre></div> <p><strong>RESPONSE</strong></p> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: 0,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;blocktemplate_blob&quot;: &quot;0100000000000000004ac94cd86e558182ae7c09615f606316e6eb4d25a1a87af26394aa233c84959d00d1e09fe70500010100d4b4010180a094a58d1d0376f2f4eae8b5ca2f676bc0f5242d18603af7dbbcf60b10bc7732d4748d0496f3000516bea1995950357900a3e85dd6b82743276bfd25763abe08e550cb393fd7c6e7f8130d6d696e657220636f6d6d656e74150017431a0edeb401000000&quot;,
+    &quot;difficulty&quot;: &quot;1563095640967&quot;,
+    &quot;height&quot;: 23124,
+    &quot;prev_hash&quot;: &quot;4ac94cd86e558182ae7c09615f606316e6eb4d25a1a87af26394aa233c84959d&quot;,
+    &quot;seed&quot;: &quot;0000000000000000000000000000000000000000000000000000000000000000&quot;,
+    &quot;status&quot;: &quot;OK&quot;
+  }
+}
+</code></pre></div> <ul> <li> <p>Outputs:</p> <p><code>blocktemplate_blob</code> — string; hex-encoded serialized block template.</p> <p><code>difficulty</code> — unsigned int, difficulty for the block template.</p> <p><code>height</code> — unsigned int, height corresponding to the block template.</p> <p><code>wallet_address</code> - address where transferred block reward</p> <p><code>stakeholder_address</code> - used only in PoS mining, address where returned stake which was used in PoS generation (optional, normally is the same as wallet_address)</p> </li> </ul> <div class="admonition note"> <p class=admonition-title>Note</p> <p>Body Params</p> <p><em>wallet_address</em> <code>string</code> required</p> <ul> <li>miner's address for receiving newly generated coins </li> </ul> <p><em>extra_text</em> <code>string</code></p> <ul> <li>additional text included into miner transaction. Cannot exceed 255 bytes.</li> </ul> <p><em>pos_block</em> <code>boolean</code></p> <ul> <li>specify type of block template to be created: PoS (true) or PoW (false). Default: false.</li> </ul> <p><em>stakeholder_address</em> <code>string</code></p> <ul> <li>specify miner's address to which the stake coins used in PoS block generation will be returned.</li> </ul> <p><em>pos_amount</em> <code>int32</code></p> <ul> <li>amount of an output used as a stake.</li> </ul> <p><em>pos_index</em> <code>int32</code></p> <ul> <li>global index of an output used as a stake.</li> </ul> </div> <h2 id=4-submitblock>4. <em>submitblock</em><a class=headerlink href=#4-submitblock title="Permanent link">&para;</a></h2> <p><code>POST</code> http://127.0.0.1:52521/json_rpc/#004</p> <ul> <li>Submits the given block, i.e., adds it to the local blockchain and broadcasts it to the network.</li> </ul> <p><strong>REQUEST</strong></p> <div class=highlight><pre><span></span><code>curl --data &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;id\&quot;:0,\&quot;method\&quot;:\&quot;submitblock\&quot;,\&quot;params\&quot;:[\&quot;0101_HEX_BLOCK_BLOB_0101\&quot;]}}&quot; -H &quot;content-type:application/json;&quot; http://127.0.0.1:52521/json_rpc
+</code></pre></div> <p><strong>RESPONSE</strong></p> <p><em>Block is accepted by the core</em></p> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: &quot;0&quot;,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;status&quot;: &quot;OK&quot;
+  }
+}
+</code></pre></div> <p><em>Block was added as alternative</em></p> <div class=highlight><pre><span></span><code>{
+  &quot;error&quot;: {
+    &quot;code&quot;: -13,
+    &quot;message&quot;: &quot;Block added as alternative&quot;
+  },
+  &quot;id&quot;: &quot;0&quot;,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;
+}
+</code></pre></div> <p><em>Block is not accepted by the core</em></p> <div class=highlight><pre><span></span><code>{
+  &quot;error&quot;: {
+    &quot;code&quot;: -7,
+    &quot;message&quot;: &quot;Block not accepted&quot;
+  },
+  &quot;id&quot;: &quot;0&quot;,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;
+}
+</code></pre></div> <div class="admonition note"> <p class=admonition-title>Note</p> <p>Body Params</p> <p><em>block's blob</em> <code>array of strings</code> required</p> <ul> <li>array of a single string; block's blob.</li> </ul> </div> <h2 id=5-getlastblockheader>5. <em>getlastblockheader</em><a class=headerlink href=#5-getlastblockheader title="Permanent link">&para;</a></h2> <p><code>GET</code> http://127.0.0.1:52521/json_rpc/#005</p> <ul> <li>Returns the header of the last block in the blockchain.</li> </ul> <p><strong>REQUEST</strong></p> <div class=highlight><pre><span></span><code>curl --data &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;id\&quot;:0,\&quot;method\&quot;:\&quot;getlastblockheader\&quot;}}&quot; -H &quot;content-type:application/json;&quot; http://127.0.0.1:52521/json_rpc
+</code></pre></div> <p><strong>RESPONSE</strong></p> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: 0,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;block_header&quot;: {
+      &quot;depth&quot;: 0,
+      &quot;difficulty&quot;: &quot;1961934344476071811&quot;,
+      &quot;hash&quot;: &quot;613a9eab47211b828aa231867aa83bc1a3573db44f47b510511f50e99e91ed21&quot;,
+      &quot;height&quot;: 23129,
+      &quot;major_version&quot;: 1,
+      &quot;minor_version&quot;: 0,
+      &quot;nonce&quot;: 0,
+      &quot;orphan_status&quot;: false,
+      &quot;prev_hash&quot;: &quot;b6138d113a0150aeae2cb6909b803e3a22407c56f143ee2c9627b8ca5f3d9724&quot;,
+      &quot;reward&quot;: 2000000000000,
+      &quot;timestamp&quot;: 1558705095
+    },
+    &quot;status&quot;: &quot;OK&quot;
+  }
+}
+</code></pre></div> <ul> <li> <p>Outputs:</p> <p><code>block_header</code> — object; a block header object for the last block.</p> </li> <li> <p>block header object fields:</p> <p><code>depth</code> — unsigned int; distance in blocks from the blockchain top. Always zero for this call.</p> <p><code>difficulty</code> — unsigned int; block difficulty.</p> <p><code>hash</code> — string; block identifier.</p> <p><code>prev_hash</code> — string; identifier of the previous block.</p> <p><code>height</code> — unsigned int; block height.</p> <p><code>major_version</code> — unsigned int; major version of a block.</p> <p><code>minor_version</code> — unsigned int; minor version of a block.</p> <p><code>nonce</code> — unsigned int; block nonce.</p> <p><code>orphan_status</code> — boolean; is this block orphan or not? Always false for this call.</p> <p><code>reward</code> — unsigned int; how much money this block has generated.</p> <p><code>timestamp</code> — unsigned int; block timestamp.</p> </li> </ul> <h2 id=6-getblockheaderbyhash>6. <em>getblockheaderbyhash</em><a class=headerlink href=#6-getblockheaderbyhash title="Permanent link">&para;</a></h2> <p><code>GET</code> http://127.0.0.1:52521/json_rpc/#006</p> <ul> <li>Returns a block header by the given hash identifier.</li> </ul> <p><strong>REQUEST</strong></p> <div class=highlight><pre><span></span><code>curl --data &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;id\&quot;:0,\&quot;method\&quot;:\&quot;getblockheaderbyhash\&quot;,\&quot;params\&quot;:{\&quot;hash\&quot;:\&quot;613a9eab47211b828aa231867aa83bc1a3573db44f47b510511f50e99e91ed21\&quot;}}&quot; -H &quot;content-type:application/json;&quot; http://127.0.0.1:52521/json_rpc
+</code></pre></div> <p><strong>RESPONSE</strong></p> <ul> <li>Request an existing block</li> </ul> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: 0,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;block_header&quot;: {
+      &quot;depth&quot;: 1,
+      &quot;difficulty&quot;: &quot;1961934344476071811&quot;,
+      &quot;hash&quot;: &quot;613a9eab47211b828aa231867aa83bc1a3573db44f47b510511f50e99e91ed21&quot;,
+      &quot;height&quot;: 23129,
+      &quot;major_version&quot;: 1,
+      &quot;minor_version&quot;: 0,
+      &quot;nonce&quot;: 0,
+      &quot;orphan_status&quot;: false,
+      &quot;prev_hash&quot;: &quot;b6138d113a0150aeae2cb6909b803e3a22407c56f143ee2c9627b8ca5f3d9724&quot;,
+      &quot;reward&quot;: 2000000000000,
+      &quot;timestamp&quot;: 1558705095
+    },
+    &quot;status&quot;: &quot;OK&quot;
+  }
+}
+</code></pre></div> <ul> <li>Request a NON-existing block</li> </ul> <div class=highlight><pre><span></span><code>{
+  &quot;error&quot;: {
+    &quot;code&quot;: -5,
+    &quot;message&quot;: &quot;Internal error: can&#39;t get block by hash. Hash = 0000000000000000000000000000000000000000000000000000000000000000.&quot;
+  },
+  &quot;id&quot;: &quot;0&quot;,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;
+}
+</code></pre></div> <ul> <li>Outputs:</li> </ul> <p><code>block_header</code> — object; a block header object for the requested block. See getlastblockheader for detailed fields descriptions.</p> <div class="admonition note"> <p class=admonition-title>Note</p> <p>Body Params</p> <p><em>hash</em> <code>string</code> required</p> <ul> <li>hash identifier of a block.</li> </ul> </div> <h2 id=7-getblockheaderbyheight>7. <em>getblockheaderbyheight</em><a class=headerlink href=#7-getblockheaderbyheight title="Permanent link">&para;</a></h2> <p><code>GET</code> http://127.0.0.1:52521/json_rpc/#007</p> <ul> <li>Returns a block header by the given block height.</li> </ul> <p><strong>REQUEST</strong></p> <div class=highlight><pre><span></span><code>curl --data &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;id\&quot;:0,\&quot;method\&quot;:\&quot;getblockheaderbyheight\&quot;,\&quot;params\&quot;:{\&quot;height\&quot;:0}}&quot; -H &quot;content-type:application/json;&quot; http://127.0.0.1:52521/json_rpc
+</code></pre></div> <p><strong>RESPONSE</strong></p> <ul> <li>Request an existing block.</li> </ul> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: 0,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;block_header&quot;: {
+      &quot;depth&quot;: 23135,
+      &quot;difficulty&quot;: &quot;1&quot;,
+      &quot;hash&quot;: &quot;cc608f59f8080e2fbfe3c8c80eb6e6a953d47cf2d6aebd345bada3a1cab99852&quot;,
+      &quot;height&quot;: 0,
+      &quot;major_version&quot;: 1,
+      &quot;minor_version&quot;: 0,
+      &quot;nonce&quot;: 101011010205,
+      &quot;orphan_status&quot;: false,
+      &quot;prev_hash&quot;: &quot;0000000000000000000000000000000000000000000000000000000000000000&quot;,
+      &quot;reward&quot;: 17517203000000000000,
+      &quot;timestamp&quot;: 0
+    },
+    &quot;status&quot;: &quot;OK&quot;
+  }
+}
+</code></pre></div> <ul> <li>Request a NON-existing block.</li> </ul> <div class=highlight><pre><span></span><code>{
+  &quot;error&quot;: {
+    &quot;code&quot;: -2,
+    &quot;message&quot;: &quot;To big height: 999999, current blockchain size = 2094&quot;
+  },
+  &quot;id&quot;: &quot;0&quot;,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;
+}
+</code></pre></div> <ul> <li>Outputs:</li> </ul> <p><code>block_header</code> — object; a block header object for the requested block. See getlastblockheader for detailed fields descriptions.</p> <div class="admonition note"> <p class=admonition-title>Note</p> <p>Body Params</p> <p><em>height</em> <code>int32</code> required</p> <ul> <li>height of a block.</li> </ul> </div> <h2 id=8-get_alias_details>8. <em>get_alias_details</em><a class=headerlink href=#8-get_alias_details title="Permanent link">&para;</a></h2> <p><code>GET</code> http://127.0.0.1:52521/json_rpc/#008</p> <ul> <li>Returns alias details by alias name.</li> </ul> <p><strong>REQUEST</strong></p> <div class=highlight><pre><span></span><code>curl --data &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;id\&quot;:0,\&quot;method\&quot;:\&quot;get_alias_details\&quot;,\&quot;params\&quot;:{\&quot;alias\&quot;:\&quot;crypto\&quot;}}&quot; -H &quot;content-type:application/json;&quot; http://127.0.0.1:52521/json_rpc
+</code></pre></div> <p><strong>RESPONSE</strong></p> <ul> <li>Correct request</li> </ul> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: 0,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;alias_details&quot;: {
+      &quot;address&quot;: &quot;eXDkdqs5U14QJBwtx2MLsxT5xHHKQ4XSwjEXVd7QVZoD4ntEVsS8MVZ9ZnKbEn5iKQ3UepcauqRU5gYU5qo2Ujxw2rseDaUdU&quot;,
+      &quot;comment&quot;: &quot;&quot;,
+      &quot;tracking_key&quot;: &quot;&quot;
+    },
+    &quot;status&quot;: &quot;OK&quot;
+  }
+}
+</code></pre></div> <ul> <li>Request details for a NON-existing alias</li> </ul> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: &quot;0&quot;,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;alias_details&quot;: {
+      &quot;address&quot;: &quot;&quot;,
+      &quot;comment&quot;: &quot;&quot;,
+      &quot;tracking_key&quot;: &quot;&quot;
+    },
+    &quot;status&quot;: &quot;NOT FOUND&quot;
+  }
+}
+</code></pre></div> <ul> <li> <p>Outputs:</p> <p><code>alias_details</code> — object; an alias details block object for the requested alias.</p> </li> <li> <p>Alias details object fields:</p> <p><code>address</code> — string; public address associated with requested alias.</p> <p><code>comment</code> — string; an arbitrary comment set by the owner. Can be empty.</p> <p><code>tracking_key</code> — string; private view key for public address. Can be empty.</p> </li> </ul> <div class="admonition note"> <p class=admonition-title>Note</p> <p>Body Params</p> <p><em>alias</em> <code>string</code> required</p> <ul> <li>alias name (without "@")</li> </ul> </div> <h2 id=9-get_alias_by_address>9. <em>get_alias_by_address</em><a class=headerlink href=#9-get_alias_by_address title="Permanent link">&para;</a></h2> <p><code>GET</code> http://127.0.0.1:52521/json_rpc/#009</p> <ul> <li>Returns alias name by address.</li> </ul> <p><strong>REQUEST</strong></p> <div class=highlight><pre><span></span><code>curl --data &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;id\&quot;:0,\&quot;method\&quot;:\&quot;get_alias_by_address\&quot;, \&quot;params\&quot;:\&quot;eXDkdqs5U14QJBwtx2MLsxT5xHHKQ4XSwjEXVd7QVZoD4ntEVsS8MVZ9ZnKbEn5iKQ3UepcauqRU5gYU5qo2Ujxw2rseDaUdU\&quot;}&quot; -H &quot;content-type:application/json;&quot; http://127.0.0.1:52521/json_rpc
+</code></pre></div> <p><strong>RESPONSE</strong></p> <ul> <li>Correct request</li> </ul> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: 0,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;alias_info&quot;: {
+      &quot;address&quot;: &quot;eXDkdqs5U14QJBwtx2MLsxT5xHHKQ4XSwjEXVd7QVZoD4ntEVsS8MVZ9ZnKbEn5iKQ3UepcauqRU5gYU5qo2Ujxw2rseDaUdU&quot;,
+      &quot;alias&quot;: &quot;crypto&quot;,
+      &quot;comment&quot;: &quot;&quot;,
+      &quot;tracking_key&quot;: &quot;&quot;
+    },
+    &quot;status&quot;: &quot;OK&quot;
+  }
+}
+</code></pre></div> <ul> <li>Request details for NON-existing alias</li> </ul> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: 0,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;alias_info&quot;: {
+      &quot;address&quot;: &quot;&quot;,
+      &quot;alias&quot;: &quot;&quot;,
+      &quot;comment&quot;: &quot;&quot;,
+      &quot;tracking_key&quot;: &quot;&quot;
+    },
+    &quot;status&quot;: &quot;NOT_FOUND&quot;
+  }
+}
+</code></pre></div> <ul> <li> <p>Outputs:</p> <p><code>alias</code> — string; alias name for an address.</p> </li> </ul> <div class="admonition note"> <p class=admonition-title>Note</p> <p>Body Params</p> <p><em>string</em> <code>string</code> required</p> <ul> <li>a public address associated with an alias.</li> </ul> </div> <h2 id=10-get_alias_reward>10. <em>get_alias_reward</em><a class=headerlink href=#10-get_alias_reward title="Permanent link">&para;</a></h2> <p><code>GET</code> http://127.0.0.1:52521/json_rpc/#010</p> <ul> <li>Returns current reward that must be paid to register an alias name.</li> </ul> <p><strong>REQUEST</strong></p> <div class=highlight><pre><span></span><code>curl --data &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;id\&quot;:0,\&quot;method\&quot;:\&quot;get_alias_reward\&quot;,\&quot;params\&quot;:{\&quot;alias\&quot;:\&quot;crypto\&quot;}}&quot; -H &quot;content-type:application/json;&quot; http://127.0.0.1:52521/json_rpc
+</code></pre></div> <p><strong>RESPONSE</strong></p> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: 0,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;reward&quot;: 100000000000,
+    &quot;status&quot;: &quot;OK&quot;
+  }
+}
+</code></pre></div> <ul> <li> <p>Outputs:</p> <p><code>reward</code> — unsigned int; current reward (in atomic units) to be paid for an alias.</p> </li> </ul> <div class="admonition note"> <p class=admonition-title>Note</p> <p>Body Params</p> <p><em>alias</em> <code>string</code></p> <ul> <li>alias name</li> </ul> </div> <h2 id=11-get_blocks_details>11. <em>get_blocks_details</em><a class=headerlink href=#11-get_blocks_details title="Permanent link">&para;</a></h2> <p><code>GET</code> http://127.0.0.1:52521/json_rpc/#011</p> <ul> <li>Return blocks details for a specified range of heights.</li> </ul> <p><strong>REQUEST</strong></p> <div class=highlight><pre><span></span><code>curl --data &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;id\&quot;:0,\&quot;method\&quot;:\&quot;get_blocks_details\&quot;,\&quot;params\&quot;:{\&quot;height_start\&quot;:10000,\&quot;count\&quot;:1}}&quot; -H &quot;content-type:application/json;&quot; http://127.0.0.1:52521/json_rpc
+</code></pre></div> <p><strong>RESPONSE</strong></p> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: 0,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;blocks&quot;: [
+      {
+        &quot;actual_timestamp&quot;: 1557906733,
+        &quot;already_generated_coins&quot;: &quot;17527203000000000000&quot;,
+        &quot;base_reward&quot;: 1000000000000,
+        &quot;blob&quot;: &quot;&quot;,
+        &quot;block_cumulative_size&quot;: 1690,
+        &quot;block_tself_size&quot;: 0,
+        &quot;cumulative_diff_adjusted&quot;: &quot;27934854069161424&quot;,
+        &quot;cumulative_diff_precise&quot;: &quot;16964766616549681&quot;,
+        &quot;difficulty&quot;: &quot;3792479698469&quot;,
+        &quot;effective_fee_median&quot;: 50050000,
+        &quot;height&quot;: 10000,
+        &quot;id&quot;: &quot;fe42b8c4742d2dbe4d5de5ae5212f75acb62b75e4b66b758ff8e252825c2d7a5&quot;,
+        &quot;is_orphan&quot;: false,
+        &quot;miner_text_info&quot;: &quot;&quot;,
+        &quot;object_in_json&quot;: &quot;...&quot;,
+        &quot;penalty&quot;: 0,
+        &quot;pow_seed&quot;: &quot;&quot;,
+        &quot;prev_id&quot;: &quot;8ee7377d6ee3632ea5b43bed2a5ea41c035abb3fe6146aec63e6c5cbbc4257f1&quot;,
+        &quot;summary_reward&quot;: 1000100000000,
+        &quot;this_block_fee_median&quot;: 100000000,
+        &quot;timestamp&quot;: 1557906733,
+        &quot;total_fee&quot;: 100000000,
+        &quot;total_txs_size&quot;: 1690,
+        &quot;transactions_details&quot;: [
+          {
+            &quot;amount&quot;: 1000100000000,
+            &quot;blob&quot;: &quot;&quot;,
+            &quot;blob_size&quot;: 136,
+            &quot;fee&quot;: 0,
+            &quot;id&quot;: &quot;018c8bcf749063ee4a8127b84586a03f9bbd1909d9e5cfdb92007ebc463462d4&quot;,
+            &quot;keeper_block&quot;: 10000,
+            &quot;object_in_json&quot;: &quot;&quot;,
+            &quot;pub_key&quot;: &quot;b5800dff01803ec97edf956c7c82cc2658333de5ca3c860e68f7f8f216f3baa9&quot;,
+            &quot;timestamp&quot;: 1557906733
+          },
+          {
+            &quot;amount&quot;: 2999900000000,
+            &quot;blob&quot;: &quot;&quot;,
+            &quot;blob_size&quot;: 1690,
+            &quot;fee&quot;: 100000000,
+            &quot;id&quot;: &quot;612ca0baf8a1a8b7b86d9b56e3b9e1ef4bf6af6296ece8d75e85601fe3987b7b&quot;,
+            &quot;keeper_block&quot;: 10000,
+            &quot;object_in_json&quot;: &quot;&quot;,
+            &quot;pub_key&quot;: &quot;bf6e7ab5488f612e0ad8f00931633f01136d69f6e973130105431b080fac2a95&quot;,
+            &quot;timestamp&quot;: 1557906733
+          }
+        ],
+        &quot;type&quot;: 1
+      }
+    ],
+    &quot;status&quot;: &quot;OK&quot;
+  }
+}
+</code></pre></div> <ul> <li> <p>Outputs:</p> <p>blocks — array of <code>block_rpc_extended_info</code> objects.</p> </li> <li> <p>block_rpc_extended_info object fields:</p> <p><code>actual_timestamp</code> — unsigned int; timestamp for the moment of block creation (for PoW blocks equal to timestamp, for PoS they differ).</p> <p><code>already_generated_coins</code> — unsigned int; total number of coins generated, including this block.</p> <p><code>base_reward</code> — unsigned int; base reward for the block (equal to reward if there are no transactions except the miner tx).</p> <p><code>pow_seed</code> — some hex string .</p> <p><code>block_cumulative_size</code> — unsigned int; total size of block's transactions, in bytes. Miner tx is included in special cases.</p> <p><code>cumulative_diff_adjusted</code> — unsigned int; cumulative PoS or PoW difficulty for the block, adjusted by the sequence factor (number of same type blocks going sequentially one-by-one).</p> <p><code>cumulative_diff_precise</code> — unsigned int; precise cumulative PoS or PoW difficulty for the block.</p> <p><code>difficulty</code> — unsigned int; difficulty of the block.</p> <p><code>effective_fee_median</code> — unsigned int; median of transaction fees within a specific window used in calculations for this block.</p> <p><code>height</code> — unsigned int; block height.</p> <p><code>id</code> — string; block hash identifier.</p> <p><code>is_orphan</code> — boolean; orphan status for the block. False for normal blocks.</p> <p><code>miner_text_info</code> — string; undefined text inserted by miner when the block was mined.</p> <p><code>object_in_json</code> — string; JSON-serialized block object.</p> <p><code>penalty</code> — unsigned int; difference between summary_reward and base_reward.</p> <p><code>prev_id</code> — string; hash identifier of the previous block.</p> <p><code>summary_reward</code> — unsigned int; amount of coins this block has generated in miner tx.</p> <p><code>this_block_fee_median</code> — unsigned int; median fee among the transactions for this block.</p> <p><code>timestamp</code> — unsigned int; block timestamp (serves a special purpose for PoS blocks, which is why actual_timestamp should be used as actual block timestamp).</p> <p><code>total_fee</code> — unsigned int; sum of transaction fees in this block.</p> <p><code>total_txs_size</code> — unsigned int; total transaction size in this block (excluding the miner tx).</p> <p><code>transactions_details</code> — array of tx_rpc_extended_info objects (see below get_tx_details description).</p> <p><code>type</code> — unsigned int; 0 if this is PoS block, 1 if this is PoW block.</p> </li> </ul> <div class="admonition note"> <p class=admonition-title>Note</p> <p>Body Params</p> <p><em>height_start</em> <code>int32</code></p> <ul> <li>starting height</li> </ul> <p><em>count</em> <code>int32</code></p> <ul> <li>number of blocks to be requested</li> </ul> </div> <h2 id=12-get_tx_details>12. <em>get_tx_details</em><a class=headerlink href=#12-get_tx_details title="Permanent link">&para;</a></h2> <p><code>GET</code> http://127.0.0.1:52521/json_rpc/#012</p> <ul> <li>Returns transaction details by specified transaction hash identifier.</li> </ul> <p><strong>REQUEST</strong></p> <div class=highlight><pre><span></span><code>curl --data &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;id\&quot;:0,\&quot;method\&quot;:\&quot;get_tx_details\&quot;,\&quot;params\&quot;:{\&quot;tx_hash\&quot;:\&quot;d4af4b8e714610865bab09375c40a625ea741ac6f2d271ee398e0ffa5c0af74c\&quot;}}&quot; -H &quot;content-type:application/json;&quot; http://127.0.0.1:52521/json_rpc
+</code></pre></div> <p><strong>RESPONSE</strong></p> <ul> <li>Correct response transaction</li> </ul> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: 0,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;status&quot;: &quot;OK&quot;,
+    &quot;tx_info&quot;: {
+      &quot;amount&quot;: 1000000200000,
+      &quot;blob&quot;: &quot;&quot;,
+      &quot;blob_size&quot;: 386,
+      &quot;extra&quot;: [
+        {
+          &quot;datails_view&quot;: &quot;&quot;,
+          &quot;short_view&quot;: &quot;a6c1a6d3453a6f21c32bd03d29b30add6bb9dcc55c23961d863b0faad5643aa8&quot;,
+          &quot;type&quot;: &quot;pub_key&quot;
+        },
+        {
+          &quot;datails_view&quot;: &quot;520f&quot;,
+          &quot;short_view&quot;: &quot;520f&quot;,
+          &quot;type&quot;: &quot;XOR&quot;
+        },
+        {
+          &quot;datails_view&quot;: &quot;c885&quot;,
+          &quot;short_view&quot;: &quot;c885&quot;,
+          &quot;type&quot;: &quot;XOR&quot;
+        }
+      ],
+      &quot;fee&quot;: 100000,
+      &quot;id&quot;: &quot;d4af4b8e714610865bab09375c40a625ea741ac6f2d271ee398e0ffa5c0af74c&quot;,
+      &quot;ins&quot;: [
+        {
+          &quot;amount&quot;: 1000000000000,
+          &quot;global_indexes&quot;: [
+            33772
+          ],
+          &quot;kimage_or_ms_id&quot;: &quot;bc97426f220d02badf7f836cedc0b10e15fa1abc0163000266c84a93e10d52cb&quot;,
+          &quot;multisig_count&quot;: 0
+        },
+        {
+          &quot;amount&quot;: 300000,
+          &quot;global_indexes&quot;: [
+            459
+          ],
+          &quot;kimage_or_ms_id&quot;: &quot;2cedd318bb5e75d5ae56a1801c1804e50da5efa708854b254b1f159fe55ce787&quot;,
+          &quot;multisig_count&quot;: 0
+        }
+      ],
+      &quot;keeper_block&quot;: 23183,
+      &quot;object_in_json&quot;: &quot;&quot;,
+      &quot;outs&quot;: [
+        {
+          &quot;amount&quot;: 100000,
+          &quot;global_index&quot;: 3590,
+          &quot;is_spent&quot;: false,
+          &quot;minimum_sigs&quot;: 0,
+          &quot;pub_keys&quot;: [
+            &quot;242884c767abe6d9d855f31119314fee229db2f014f80c46c1ab14428be818cf&quot;
+          ]
+        },
+        {
+          &quot;amount&quot;: 100000,
+          &quot;global_index&quot;: 3591,
+          &quot;is_spent&quot;: false,
+          &quot;minimum_sigs&quot;: 0,
+          &quot;pub_keys&quot;: [
+            &quot;e6295a3dc3a0b139feb330ec6591cc76f29468fb660ffc8413c883221117b6c2&quot;
+          ]
+        },
+        {
+          &quot;amount&quot;: 1000000000000,
+          &quot;global_index&quot;: 34112,
+          &quot;is_spent&quot;: false,
+          &quot;minimum_sigs&quot;: 0,
+          &quot;pub_keys&quot;: [
+            &quot;23587fbe7731bce91b7a81b0bcb310a8430057d426a6842e205aeb223c9457c5&quot;
+          ]
+        }
+      ],
+      &quot;pub_key&quot;: &quot;a6c1a6d3453a6f21c32bd03d29b30add6bb9dcc55c23961d863b0faad5643aa8&quot;,
+      &quot;timestamp&quot;: 1558706609
+    }
+  }
+}
+</code></pre></div> <ul> <li>Request a NON-existing transaction</li> </ul> <div class=highlight><pre><span></span><code>{
+  &quot;error&quot;: {
+    &quot;code&quot;: -14,
+    &quot;message&quot;: &quot;tx is not found&quot;
+  },
+  &quot;id&quot;: 0,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;
+}
+</code></pre></div> <ul> <li> <p>Outputs:</p> <p><code>tx_info</code> — object; a <code>tx_rpc_extended_info</code> object (see below).</p> </li> <li> <p>tx_rpc_extended_info object fields:</p> <p><code>amount</code> — unsigned int; sum of transaction outputs.</p> <p><code>attachments</code> — array of objects; list of transaction attachments.</p> <p><code>blob_size</code> — unsigned int; size of serialized transaction in bytes.</p> <p><code>extra</code> — array of objects; list of extra items.</p> <p><code>fee</code> — unsigned int; transaction fee.</p> <p><code>id</code> — string; hash identifier of the transaction.</p> <p><code>ins</code> — array of objects; list of inputs.</p> <p><code>keeper_block</code> — unsigned int; height of the block containing this transaction.</p> <p><code>outs</code> — array of objects; list of outputs.</p> <p><code>pub_key</code> — string; transaction public key.</p> <p><code>timestamp</code> — unsigned int; actual timestamp of the block containing this transaction.</p> </li> </ul> <div class="admonition note"> <p class=admonition-title>Note</p> <p>Body Params</p> <p><em>tx_hash</em> <code>string</code> required</p> <ul> <li>hash identifier of a transaction</li> </ul> </div> <h2 id=13-search_by_id>13. <em>search_by_id</em><a class=headerlink href=#13-search_by_id title="Permanent link">&para;</a></h2> <p><code>GET</code> http://127.0.0.1:52521/json_rpc/#013</p> <ul> <li>Returns type of an entity by specified hash identifier.</li> </ul> <p><strong>REQUEST</strong></p> <div class=highlight><pre><span></span><code>curl --data &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;id\&quot;:0,\&quot;method\&quot;:\&quot;search_by_id\&quot;,\&quot;params\&quot;:{\&quot;id\&quot;:\&quot;d4af4b8e714610865bab09375c40a625ea741ac6f2d271ee398e0ffa5c0af74c\&quot;}}&quot; -H &quot;content-type:application/json;&quot; http://127.0.0.1:52521/json_rpc
+</code></pre></div> <p><strong>RESPONSE</strong></p> <ul> <li>Response <code>application/json</code> block</li> </ul> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: 0,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;status&quot;: &quot;OK&quot;,
+    &quot;types_found&quot;: [
+      &quot;block&quot;
+    ]
+  }
+}
+</code></pre></div> <ul> <li>Response <code>text/plain</code> transaction</li> </ul> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: 0,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;status&quot;: &quot;OK&quot;,
+    &quot;types_found&quot;: [
+      &quot;block&quot;
+    ]
+  }
+}
+</code></pre></div> <ul> <li> <p>Outputs:</p> <p><code>types_found</code> — array of strings; a set of the types found (usually only one). </p> </li> </ul> <p>Possible values: block, alt_block, key_image, tx, multisig_id.</p> <div class="admonition note"> <p class=admonition-title>Note</p> <p>Body Params</p> <p><em>id</em> <code>string</code> required</p> <ul> <li>hash identifier of a block, transaction, key image, or multisig output</li> </ul> </div> <h2 id=14-getinfo>14. <em>getinfo</em><a class=headerlink href=#14-getinfo title="Permanent link">&para;</a></h2> <p><code>GET</code> http://127.0.0.1:52521/json_rpc/#014</p> <ul> <li>Returns various information and stats.</li> </ul> <p>List of available flags values:</p> <table> <thead> <tr> <th>RPC Command</th> <th>Flag</th> </tr> </thead> <tbody> <tr> <td>COMMAND_RPC_GET_INFO_FLAG_POS_DIFFICULTY</td> <td>0x0000000000000001</td> </tr> <tr> <td>COMMAND_RPC_GET_INFO_FLAG_POW_DIFFICULTY</td> <td>0x0000000000000002</td> </tr> <tr> <td>COMMAND_RPC_GET_INFO_FLAG_NET_TIME_DELTA_MEDIAN</td> <td>0x0000000000000004</td> </tr> <tr> <td>COMMAND_RPC_GET_INFO_FLAG_CURRENT_NETWORK_HASHRATE_50</td> <td>0x0000000000000008</td> </tr> <tr> <td>COMMAND_RPC_GET_INFO_FLAG_CURRENT_NETWORK_HASHRATE_350</td> <td>0x0000000000000010</td> </tr> <tr> <td>COMMAND_RPC_GET_INFO_FLAG_SECONDS_FOR_10_BLOCKS</td> <td>0x0000000000000020</td> </tr> <tr> <td>COMMAND_RPC_GET_INFO_FLAG_SECONDS_FOR_30_BLOCKS</td> <td>0x0000000000000040</td> </tr> <tr> <td>COMMAND_RPC_GET_INFO_FLAG_TRANSACTIONS_DAILY_STAT</td> <td>0x0000000000000080</td> </tr> <tr> <td>COMMAND_RPC_GET_INFO_FLAG_LAST_POS_TIMESTAMP</td> <td>0x0000000000000100</td> </tr> <tr> <td>COMMAND_RPC_GET_INFO_FLAG_LAST_POW_TIMESTAMP</td> <td>0x0000000000000200</td> </tr> <tr> <td>COMMAND_RPC_GET_INFO_FLAG_TOTAL_COINS</td> <td>0x0000000000000400</td> </tr> <tr> <td>COMMAND_RPC_GET_INFO_FLAG_LAST_BLOCK_SIZE</td> <td>0x0000000000000800</td> </tr> <tr> <td>COMMAND_RPC_GET_INFO_FLAG_TX_COUNT_IN_LAST_BLOCK</td> <td>0x0000000000001000</td> </tr> <tr> <td>COMMAND_RPC_GET_INFO_FLAG_POS_SEQUENCE_FACTOR</td> <td>0x0000000000002000</td> </tr> <tr> <td>COMMAND_RPC_GET_INFO_FLAG_POW_SEQUENCE_FACTOR</td> <td>0x0000000000004000</td> </tr> <tr> <td>COMMAND_RPC_GET_INFO_FLAG_OUTS_STAT</td> <td>0x0000000000008000</td> </tr> <tr> <td>COMMAND_RPC_GET_INFO_FLAG_PERFORMANCE</td> <td>0x0000000000010000</td> </tr> <tr> <td>COMMAND_RPC_GET_INFO_FLAG_POS_BLOCK_TS_SHIFT_VS_ACTUAL</td> <td>0x0000000000020000</td> </tr> <tr> <td>COMMAND_RPC_GET_INFO_FLAG_MARKET</td> <td>0x0000000000040000</td> </tr> <tr> <td>COMMAND_RPC_GET_INFO_FLAG_ALL_FLAGS</td> <td>0xffffffffffffffff</td> </tr> </tbody> </table> <p><strong>REQUEST</strong></p> <div class=highlight><pre><span></span><code>curl --data &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;id\&quot;:0,\&quot;method\&quot;:\&quot;getinfo\&quot;,\&quot;params\&quot;:{\&quot;flags\&quot;:4294967295}}}&quot; -H &quot;content-type:application/json;&quot; http://127.0.0.1:52521/json_rpc
+</code></pre></div> <p><strong>RESPONSE</strong></p> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: 0,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;alias_count&quot;: 89,
+    &quot;alt_blocks_count&quot;: 38,
+    &quot;block_reward&quot;: 1000000000000,
+    &quot;current_blocks_median&quot;: 125000,
+    &quot;current_max_allowed_block_size&quot;: 250000,
+    &quot;current_network_hashrate_350&quot;: 12371661017,
+    &quot;current_network_hashrate_50&quot;: 22307725414,
+    &quot;daemon_network_state&quot;: 2,
+    &quot;default_fee&quot;: 10000000000,
+    &quot;expiration_median_timestamp&quot;: 1558706697,
+    &quot;grey_peerlist_size&quot;: 52,
+    &quot;height&quot;: 23195,
+    &quot;incoming_connections_count&quot;: 17,
+    &quot;last_block_hash&quot;: &quot;941637785d710dddd3391eb7adc451db31855c99ac31cec4f221ad856b86871f&quot;,
+    &quot;last_block_size&quot;: 0,
+    &quot;last_block_timestamp&quot;: 1558707495,
+    &quot;last_block_total_reward&quot;: 1000000000000,
+    &quot;last_pos_timestamp&quot;: 1558707495,
+    &quot;last_pow_timestamp&quot;: 1558707021,
+    &quot;max_net_seen_height&quot;: 21097,
+    &quot;mi&quot;: {
+      &quot;build_no&quot;: 26,
+      &quot;mode&quot;: 0,
+      &quot;ver_major&quot;: 1,
+      &quot;ver_minor&quot;: 0,
+      &quot;ver_revision&quot;: 0
+    },
+    &quot;minimum_fee&quot;: 10000000000,
+    &quot;net_time_delta_median&quot;: 0,
+    &quot;offers_count&quot;: 0,
+    &quot;outgoing_connections_count&quot;: 8,
+    &quot;outs_stat&quot;: {
+      &quot;amount_0_001&quot;: 1636,
+      &quot;amount_0_01&quot;: 3177,
+      &quot;amount_0_1&quot;: 1829,
+      &quot;amount_1&quot;: 34129,
+      &quot;amount_10&quot;: 407,
+      &quot;amount_100&quot;: 719,
+      &quot;amount_1000&quot;: 6,
+      &quot;amount_10000&quot;: 2,
+      &quot;amount_100000&quot;: 0,
+      &quot;amount_1000000&quot;: 0
+    },
+    &quot;performance_data&quot;: {
+      &quot;all_txs_insert_time_5&quot;: 106,
+      &quot;block_processing_time_0&quot;: 8000,
+      &quot;block_processing_time_1&quot;: 8337,
+      &quot;etc_stuff_6&quot;: 681,
+      &quot;insert_time_4&quot;: 16,
+      &quot;longhash_calculating_time_3&quot;: 1074,
+      &quot;map_size&quot;: 137438953472,
+      &quot;raise_block_core_event&quot;: 0,
+      &quot;target_calculating_calc&quot;: 11,
+      &quot;target_calculating_enum_blocks&quot;: 5799,
+      &quot;target_calculating_time_2&quot;: 5816,
+      &quot;tx_add_one_tx_time&quot;: 7432,
+      &quot;tx_append_is_expired&quot;: 0,
+      &quot;tx_append_rl_wait&quot;: 0,
+      &quot;tx_append_time&quot;: 253,
+      &quot;tx_check_exist&quot;: 6,
+      &quot;tx_check_inputs_attachment_check&quot;: 0,
+      &quot;tx_check_inputs_loop&quot;: 10133,
+      &quot;tx_check_inputs_loop_ch_in_val_sig&quot;: 1368,
+      &quot;tx_check_inputs_loop_kimage_check&quot;: 16,
+      &quot;tx_check_inputs_loop_scan_outputkeys_get_item_size&quot;: 10,
+      &quot;tx_check_inputs_loop_scan_outputkeys_loop&quot;: 122,
+      &quot;tx_check_inputs_loop_scan_outputkeys_loop_find_tx&quot;: 24,
+      &quot;tx_check_inputs_loop_scan_outputkeys_loop_get_subitem&quot;: 10,
+      &quot;tx_check_inputs_loop_scan_outputkeys_loop_handle_output&quot;: 0,
+      &quot;tx_check_inputs_loop_scan_outputkeys_relative_to_absolute&quot;: 0,
+      &quot;tx_check_inputs_prefix_hash&quot;: 0,
+      &quot;tx_check_inputs_time&quot;: 7175,
+      &quot;tx_count&quot;: 0,
+      &quot;tx_prapare_append&quot;: 0,
+      &quot;tx_print_log&quot;: 0,
+      &quot;tx_process_attachment&quot;: 0,
+      &quot;tx_process_extra&quot;: 0,
+      &quot;tx_process_inputs&quot;: 66,
+      &quot;tx_push_global_index&quot;: 113,
+      &quot;tx_store_db&quot;: 20,
+      &quot;writer_tx_count&quot;: 0
+    },
+    &quot;pos_allowed&quot;: true,
+    &quot;pos_block_ts_shift_vs_actual&quot;: 459,
+    &quot;pos_diff_total_coins_rate&quot;: 118,
+    &quot;pos_difficulty&quot;: &quot;2748846848713493647&quot;,
+    &quot;pos_sequence_factor&quot;: 2,
+    &quot;pow_difficulty&quot;: 1701500087805,
+    &quot;pow_sequence_factor&quot;: 0,
+    &quot;seconds_for_10_blocks&quot;: 440,
+    &quot;seconds_for_30_blocks&quot;: 889,
+    &quot;status&quot;: &quot;OK&quot;,
+    &quot;synchronization_start_height&quot;: 21094,
+    &quot;synchronized_connections_count&quot;: 25,
+    &quot;total_coins&quot;: &quot;17540397000000000000&quot;,
+    &quot;transactions_cnt_per_day&quot;: 559,
+    &quot;transactions_volume_per_day&quot;: 5337825461100000,
+    &quot;tx_count&quot;: 9267,
+    &quot;tx_count_in_last_block&quot;: 0,
+    &quot;tx_pool_performance_data&quot;: {
+      &quot;begin_tx_time&quot;: 7,
+      &quot;check_inputs_time&quot;: 4567,
+      &quot;check_inputs_types_supported_time&quot;: 0,
+      &quot;check_keyimages_ws_ms_time&quot;: 20,
+      &quot;db_commit_time&quot;: 13276,
+      &quot;expiration_validate_time&quot;: 1,
+      &quot;tx_processing_time&quot;: 18030,
+      &quot;update_db_time&quot;: 132,
+      &quot;validate_alias_time&quot;: 8,
+      &quot;validate_amount_time&quot;: 0
+    },
+    &quot;tx_pool_size&quot;: 3,
+    &quot;white_peerlist_size&quot;: 128
+  }
+}
+</code></pre></div> <ul> <li> <p>Outputs:</p> <ul> <li> <p><code>alias_count</code> — unsigned int; number of total aliases registered.</p> </li> <li> <p><code>alt_blocks_count</code> — unsigned int; number of alternative blocks known to this node.</p> </li> <li> <p><code>block_reward</code> — unsigned int; base block reward for the next block (excluding fees and txs size penalty).</p> <ul> <li>Calculated only if both <code>COMMAND_RPC_GET_INFO_FLAG_POS_DIFFICULTY</code> and <code>COMMAND_RPC_GET_INFO_FLAG_TOTAL_COINS</code> flags are present.</li> </ul> </li> <li> <p><code>current_blocks_median</code> — unsigned int; median of cumulative block sizes for the recent N blocks.</p> </li> <li> <p><code>current_max_allowed_block_size</code> — unsigned int; maximum allowed cumulative size of a block in bytes.</p> </li> <li> <p><code>current_network_hashrate_350</code> — unsigned int; network hashrate calculated by difficulty within a window of the last 350 blocks. </p> <ul> <li>Calculated only if <code>COMMAND_RPC_GET_INFO_FLAG_CURRENT_NETWORK_HASHRATE_350</code> flag is present.</li> </ul> </li> <li> <p><code>current_network_hashrate_50</code> — unsigned int; the same as above for last 50 blocks. </p> <ul> <li>Calculated only if <code>COMMAND_RPC_GET_INFO_FLAG_CURRENT_NETWORK_HASHRATE_50</code> flag is present.</li> </ul> </li> <li> <p><code>daemon_network_state</code> — unsigned int; current daemon state. Possible values and their meaning:</p> <div class=highlight><pre><span></span><code>daemon_network_state_connecting = 0,
+daemon_network_state_synchronizing = 1,
+daemon_network_state_online = 2,
+daemon_network_state_loading_core = 3,
+daemon_network_state_internal_error = 4,
+daemon_network_state_unloading_core = 5
+</code></pre></div> </li> <li> <p><code>default_fee</code> — unsigned int; current default fee.</p> </li> <li> <p><code>grey_peerlist_size</code> — unsigned int; number of peers in the gray list (these are peers received from another node and this node has not yet attempted to connect to them).</p> </li> <li> <p><code>height</code> — unsigned int; number of blocks in the main chain.</p> </li> <li> <p><code>incoming_connections_count</code> — unsigned int; number of incoming P2P connections.</p> </li> <li> <p><code>last_block_size</code> — unsigned int; cumulative size of the last block. </p> <ul> <li>Returned only if <code>COMMAND_RPC_GET_INFO_FLAG_LAST_BLOCK_SIZE</code> flag is present.</li> </ul> </li> <li> <p><code>last_block_total_reward</code> — unsigned int; actual reward for the last block. </p> <ul> <li>Calculated only if both <code>COMMAND_RPC_GET_INFO_FLAG_POS_DIFFICULTY</code> and <code>COMMAND_RPC_GET_INFO_FLAG_TOTAL_COINS</code> flags are present.</li> </ul> </li> <li> <p><code>last_pos_timestamp</code> — unsigned int; timestamp of the last PoS block in the main chain. </p> <ul> <li>Calculated only if <code>COMMAND_RPC_GET_INFO_FLAG_LAST_POS_TIMESTAMP</code> flag is present.</li> </ul> </li> <li> <p><code>last_pow_timestamp</code> — unsigned int; timestamp of the last PoW block in the main chain. </p> <ul> <li>Calculated only if <code>COMMAND_RPC_GET_INFO_FLAG_LAST_POW_TIMESTAMP</code> flag is present.</li> </ul> </li> <li> <p><code>max_net_seen_height</code> — unsigned int; size of the longest chain among this node’s peers.</p> </li> <li> <p><code>mi</code> — object; the last received maintainer info message with recommended build versions from project maintainers. </p> <ul> <li>See below detailed description of <code>maintainers_info_external</code> object.</li> </ul> </li> <li> <p><code>minimum_fee</code> — unsigned int; current tx fee minimum required by tx pool.</p> </li> <li> <p><code>net_time_delta_median</code> — signed int; median of system time differences among this node’s peers. </p> <ul> <li>Calculated only if <code>COMMAND_RPC_GET_INFO_FLAG_NET_TIME_DELTA_MEDIAN</code> flag is present.</li> </ul> </li> <li> <p><code>offers_count</code> — unsigned int; total number of market offers known to this node. </p> <ul> <li>Calculated only if <code>COMMAND_RPC_GET_INFO_FLAG_PERFORMANCE</code> flag is present and no <code>--disable-market</code> CLI option was specified.</li> </ul> </li> <li> <p><code>outgoing_connections_count</code> — unsigned int; number of outgoing P2P connections.</p> </li> <li> <p><code>outs_stat</code> — object; brief output statistics.</p> </li> <li> <p><code>pos_allowed</code> — boolean; false if PoS blocks cannot be accepted yet, otherwise — true.</p> </li> <li> <p><code>pos_block_ts_shift_vs_actual</code> — signed int; the difference between the block timestamp and actual block timestamp for the last PoS block in the main chain. </p> <ul> <li>Calculated only if <code>COMMAND_RPC_GET_INFO_FLAG_POS_BLOCK_TS_SHIFT_VS_ACTUAL</code> flag is present.</li> </ul> </li> <li> <p><code>pos_diff_total_coins_rate</code> — unsigned int; current ratio of PoS difficulty to total coins mined. </p> <ul> <li>Calculated only if both <code>COMMAND_RPC_GET_INFO_FLAG_POS_DIFFICULTY</code> and <code>COMMAND_RPC_GET_INFO_FLAG_TOTAL_COINS</code> flags are present.</li> </ul> </li> <li> <p><code>pos_difficulty</code> — unsigned int; difficulty for the next PoS block.</p> </li> <li> <p><code>pos_sequence_factor</code> — unsigned int; size of a continuous sequence of PoS blocks starting from the top block. </p> <ul> <li>Calculated only if <code>COMMAND_RPC_GET_INFO_FLAG_POS_SEQUENCE_FACTOR</code> flag is present.</li> </ul> </li> <li> <p><code>pow_difficulty</code> — unsigned int; difficulty for the next PoW block.</p> </li> <li> <p><code>pow_sequence_factor</code> — unsigned int; size of a continuous sequence of PoW blocks starting from the top block. </p> <p>(Required flag: <code>COMMAND_RPC_GET_INFO_FLAG_POW_SEQUENcE_FACTOR</code>)</p> </li> <li> <p><code>seconds_for_10_blocks</code> — unsigned int; timestamp difference between the top block and the 10th from the top. </p> <p>(Required flag: <code>COMMAND_RPC_GET_INFO_FLAG_SECONDS_FOR_10_BLOCKS</code>)</p> </li> <li> <p><code>seconds_for_30_blocks</code> — unsigned int; timestamp difference between the top block and the 30th from the top. </p> <p>(Required flag: <code>COMMAND_RPC_GET_INFO_FLAG_SECONDS_FOR_30_BLOCKS</code>)</p> </li> <li> <p><code>synchronization_start_height</code> — unsigned int; size of the local blockchain when the synchronization process started for the first time after daemon start.</p> </li> <li> <p><code>synchronized_connections_count</code> — unsigned int; number of synchronized peers.</p> </li> <li> <p><code>total_coins</code> — unsigned int; number of emitted coins. </p> <p>(Required flag: <code>COMMAND_RPC_GET_INFO_FLAG_TOTAL_COINS</code>)</p> </li> <li> <p><code>transactions_cnt_per_day</code> — unsigned int; number of non-coinbase transactions for the last 24 hours. </p> <p>(Required flag: <code>COMMAND_RPC_GET_INFO_FLAG_TRANSACTIONS_DAILY_STAT</code>)</p> </li> <li> <p><code>transactions_volume_per_day</code> — unsigned int; total amount of non-miner transactions for the last 24 hours. </p> <p>(Required flag: <code>COMMAND_RPC_GET_INFO_FLAG_TRANSACTIONS_DAILY_STAT</code>)</p> </li> <li> <p><code>tx_count</code> — unsigned int; total number of all non-coinbase transactions.</p> </li> <li> <p><code>tx_count_in_last_block</code> — unsigned int; number of non-coinbase transactions in the last block. </p> <p>(Required flag: <code>COMMAND_RPC_GET_INFO_FLAG_TX_COUNT_IN_LAST_BLOCK</code>)</p> </li> <li> <p><code>tx_pool_size</code> — unsigned int; number of transactions in the tx pool.</p> </li> <li> <p><code>white_peerlist_size</code> — unsigned int; number of peers in the white list (total number of peers to which this node has ever been connected).</p> </li> </ul> </li> <li> <p>Fields of maintainers_info_external object:</p> <p><code>ver_major</code> — unsigned int; major build version from project maintainers.</p> <p><code>ver_minor</code> — unsigned int; minor build version from project maintainers.</p> <p><code>ver_revision</code> — unsigned int; revision build version from project maintainers.</p> <p><code>mode</code> — unsigned int; maintainers info message type:</p> <div class=highlight><pre><span></span><code>#define ALERT_TYPE_CALM 1
+#define ALERT_TYPE_URGENT 2
+#define ALERT_TYPE_CRITICAL 3
+</code></pre></div> </li> </ul> <div class="admonition note"> <p class=admonition-title>Note</p> <p>Body Params</p> <p><em>flags</em> <code>int32</code> required</p> <ul> <li>binary mask of flags combined together with bitwise-OR operation. Default: 0 (no flags)</li> </ul> </div> <h2 id=15-get_out_info>15. <em>get_out_info</em><a class=headerlink href=#15-get_out_info title="Permanent link">&para;</a></h2> <p><code>GET</code> http://127.0.0.1:11211/json_rpc/#015</p> <ul> <li>Looks up an output in the global outputs table by specified amount and output global index.</li> </ul> <p><strong>REQUEST</strong></p> <div class=highlight><pre><span></span><code>curl --data &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;id\&quot;:0,\&quot;method\&quot;:\&quot;get_out_info\&quot;,\&quot;params\&quot;:{\&quot;amount\&quot;:1000000,\&quot;i\&quot;:1}}}&quot; -H &quot;content-type:application/json;&quot; http://127.0.0.1:52521/json_rpc
+</code></pre></div> <p><strong>RESPONSE</strong></p> <ul> <li>Normal request <code>application/json</code></li> </ul> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: 0,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;out_no&quot;: 0,
+    &quot;status&quot;: &quot;OK&quot;,
+    &quot;tx_id&quot;: &quot;09237f99387faa47ca971ce6805534c012f29a513b1e95dd8279ba4e1d81a837&quot;
+  }
+}
+</code></pre></div> <ul> <li>Request a NON-existing output <code>text/plain</code></li> </ul> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: &quot;0&quot;,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;out_no&quot;: 0,
+    &quot;status&quot;: &quot;NOT FOUND&quot;,
+    &quot;tx_id&quot;: &quot;0000000000000000000000000000000000000000000000000000000000000000&quot;
+  }
+}
+</code></pre></div> <ul> <li> <p>Outputs:</p> <p><code>status</code> — string; "OK" if the output was found, "NOT FOUND" if the requested output was not found.</p> <p><code>tx_id</code> — string; hash identifier of output's source transaction.</p> <p><code>out_no</code> — unsigned int; output local index in its source transaction.</p> </li> </ul> <div class="admonition note"> <p class=admonition-title>Note</p> <p>Body Params</p> <p><em>amount</em> <code>int32</code> required</p> <ul> <li>output amount</li> </ul> <p><em>i</em> <code>int32</code> required</p> <ul> <li>output global index</li> </ul> </div> <h2 id=16-get_multisig_info>16. <em>get_multisig_info</em><a class=headerlink href=#16-get_multisig_info title="Permanent link">&para;</a></h2> <p><code>GET</code> http://127.0.0.1:52521/json_rpc/#016</p> <ul> <li>Looks up multisig output by specified identifier.</li> </ul> <p><strong>REQUEST</strong></p> <div class=highlight><pre><span></span><code>curl --data &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;id\&quot;:0,\&quot;method\&quot;:\&quot;get_multisig_info\&quot;,\&quot;params\&quot;:{\&quot;ms_id\&quot;:\&quot;8937e6b5d11b18e6bf55c213723aeb2203e0b8a8906d1ed662236e4bc070e604\&quot;}}&quot; -H &quot;content-type:application/json;&quot; http://127.0.0.1:52521/json_rpc
+</code></pre></div> <p><strong>RESPONSE</strong></p> <ul> <li>Normal request <code>application/json</code></li> </ul> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: &quot;0&quot;,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;out_no&quot;: 3,
+    &quot;status&quot;: &quot;OK&quot;,
+    &quot;tx_id&quot;: &quot;2df88a09b2d8b73a45824526c26e7f21836bbe0b111e1e8a6896c1a7fc8e03eb&quot;
+  }
+}
+</code></pre></div> <ul> <li>Request NON-existing output <code>text/plain</code></li> </ul> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: &quot;0&quot;,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;out_no&quot;: 0,
+    &quot;status&quot;: &quot;NOT FOUND&quot;,
+    &quot;tx_id&quot;: &quot;0000000000000000000000000000000000000000000000000000000000000000&quot;
+  }
+}
+</code></pre></div> <ul> <li> <p>Outputs:</p> <p><code>tx_id</code> — string; hash identifier of transaction, containing the given multisig output.</p> <p><code>out_no</code> — unsigned int; local multisig output index in the transaction, starting from zero.</p> </li> </ul> <div class="admonition note"> <p class=admonition-title>Note</p> <p>Body Params</p> <p><em>ms_id</em> <code>string</code> required</p> <ul> <li>hash identifier of a multisig output</li> </ul> </div> <h2 id=17-get_all_alias_details>17. <em>get_all_alias_details</em><a class=headerlink href=#17-get_all_alias_details title="Permanent link">&para;</a></h2> <p><code>GET</code> http://127.0.0.1:52521/json_rpc/#017</p> <ul> <li>Returns all registered aliases.</li> </ul> <p><strong>REQUEST</strong></p> <div class=highlight><pre><span></span><code>curl --data &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;id\&quot;:0,\&quot;method\&quot;:\&quot;get_all_alias_details\&quot;}&quot; -H &quot;content-type:application/json;&quot; http://127.0.0.1:52521/json_rpc
+</code></pre></div> <p><strong>RESPONSE</strong></p> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: 0,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;aliases&quot;: [
+      {
+        &quot;address&quot;: &quot;ZxBvxQuPUah1BxopoeysUze4Z1G7Ts86uQNMTRrcMLrwRcpfqFtPinuXf7sMy7gLfYWXrRJnA692PC4nM7JJS5Tn1rQSmtgcG&quot;,
+        &quot;alias&quot;: &quot;abcevox&quot;,
+        &quot;comment&quot;: &quot;&quot;,
+        &quot;tracking_key&quot;: &quot;&quot;
+      },
+      {
+        &quot;address&quot;: &quot;ZxCgpbN4yts1CAhXh9qxKbERsYoaZY972EBJKoiukhdp9tQSSbSjpE9a2g4KNSssJ8HiL4p2mjz77gTTDuvRFzhe26yyaPhgW&quot;,
+        &quot;alias&quot;: &quot;alexandre&quot;,
+        &quot;comment&quot;: &quot;&quot;,
+        &quot;tracking_key&quot;: &quot;&quot;
+      },
+      {
+        &quot;address&quot;: &quot;ZxCVg1QXPr1UQNaBN3zkaVZdhUB4tbvMhRaXeWToyfm2Rpg76GWbeJZ7e1vL535JYXg7K5E7wj2w9YJwW38pvPwF34u7TX7cm&quot;,
+        &quot;alias&quot;: &quot;alexbo&quot;,
+        &quot;comment&quot;: &quot;&quot;,
+        &quot;tracking_key&quot;: &quot;&quot;
+      },
+      {
+        &quot;address&quot;: &quot;ZxC7eRhz54PLZnaECze66aKuvSTSZa74DNjFfppy5SNV7aK1uzeNo1wKDAKyiCmU44K9vZ8TVLw3A86ALoj6k1Ra31trAhqNR&quot;,
+        &quot;alias&quot;: &quot;zoinker&quot;,
+        &quot;comment&quot;: &quot;&quot;,
+        &quot;tracking_key&quot;: &quot;&quot;
+      }
+    ],
+    &quot;status&quot;: &quot;OK&quot;
+  }
+}
+</code></pre></div> <ul> <li> <p>Outputs:</p> <p><code>aliases</code> — array of <code>alias_rpc_details</code> objects.</p> <ul> <li> <p>alias_rpc_details object's fields description:</p> <p><code>alias</code> — string; alias name.</p> <p><code>address</code> — string; address of a corresponding wallet.</p> <p><code>tracking_key</code> — string; hex-encoded secret view key (optional) of the wallet.</p> <p><code>comment</code> — string; user-defined comment, made by alias owner (optional).</p> </li> </ul> </li> </ul> <h2 id=18-get_aliases>18. <em>get_aliases</em><a class=headerlink href=#18-get_aliases title="Permanent link">&para;</a></h2> <p><code>GET</code> http://127.0.0.1:52521/json_rpc/#018</p> <ul> <li>Retrieves a specified range of aliases from the global list.</li> </ul> <div class="admonition warning"> <p class=admonition-title>Warning</p> <p>Obsolete method!</p> <p>Not recommended for use.</p> </div> <p><strong>REQUEST</strong></p> <div class=highlight><pre><span></span><code>curl --data &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;id\&quot;:0,\&quot;method\&quot;:\&quot;get_aliases\&quot;,\&quot;params\&quot;:{\&quot;offset\&quot;:0,\&quot;count\&quot;:1}}}&quot; -H &quot;content-type:application/json;&quot; http://127.0.0.1:52521/json_rpc
+</code></pre></div> <p><strong>RESPONSE</strong></p> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: 0,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;aliases&quot;: [
+      {
+        &quot;address&quot;: &quot;eXBvxQuPUah1BxopoeysUze4Z1G7Ts86uQNMTRrcMLrwRcpfqFtPinuXf7sMy7gLfYWXrRJnA692PC4nM7JJS5Tn1rQSmtgcG&quot;,
+        &quot;alias&quot;: &quot;abcevox&quot;,
+        &quot;comment&quot;: &quot;&quot;,
+        &quot;tracking_key&quot;: &quot;&quot;
+      }
+    ],
+    &quot;status&quot;: &quot;OK&quot;
+  }
+}
+</code></pre></div> <ul> <li> <p>Outputs:</p> <p><code>aliases</code> — array of alias_rpc_details objects; see get_all_alias_details method description for details.</p> </li> </ul> <div class="admonition note"> <p class=admonition-title>Note</p> <p>Body Params</p> <p><em>offset</em> <code>int32</code> required</p> <ul> <li>starting offset in global alias list</li> </ul> <p><em>count</em> <code>int32</code> required</p> <ul> <li>how many elements to retrieve</li> </ul> </div> <h2 id=19-get_pool_txs_details>19. <em>get_pool_txs_details</em><a class=headerlink href=#19-get_pool_txs_details title="Permanent link">&para;</a></h2> <p><code>GET</code> http://127.0.0.1:52521/json_rpc/#019</p> <ul> <li>Returns transactions that are currently in the pool.</li> </ul> <p><strong>REQUEST</strong></p> <div class=highlight><pre><span></span><code>curl --data &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;id\&quot;:\&quot;0\&quot;,\&quot;method\&quot;:\&quot;get_pool_txs_details\&quot;}&quot; -H &quot;content-type:application/json;&quot; http://127.0.0.1:52521/json_rpc
+</code></pre></div> <p><strong>RESPONSE</strong></p> <ul> <li>Requestiong all transactions <code>application/json</code></li> </ul> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: &quot;0&quot;,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;status&quot;: &quot;OK&quot;,
+    &quot;txs&quot;: [
+      {
+        &quot;amount&quot;: 500000000000000,
+        &quot;blob&quot;: &quot;&quot;,
+        &quot;blob_size&quot;: 57913,
+        &quot;fee&quot;: 10000000000,
+        &quot;id&quot;: &quot;5864f3e061c70b47d4ea6a47e593aad66bb2462fa4036be2cd3dfede9faa7583&quot;,
+        &quot;keeper_block&quot;: 0,
+        &quot;object_in_json&quot;: &quot;&quot;,
+        &quot;pub_key&quot;: &quot;24a523aea7d0b1e69e5a393a7e5531455c4317e527ad83be7a871fea716dc45c&quot;,
+        &quot;timestamp&quot;: 1558557359
+      }
+    ]
+  }
+}
+</code></pre></div> <ul> <li>Requesting specific transactions</li> </ul> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: &quot;0&quot;,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;status&quot;: &quot;OK&quot;,
+    &quot;txs&quot;: [{
+      &lt;FULL DETAILED TX INFO for tx 01c5cf5128e4941e78c522d829b6e93277248567159498ad2576a677919c89e9&gt;
+    }]
+  }
+}
+</code></pre></div> <ul> <li> <p>Outputs:</p> <p><code>txs</code> — array of tx_rpc_extended_info objects; see get_tx_details method description for details.</p> <p>Note: Output is less detailed if ids parameter is empty or omitted.</p> </li> </ul> <div class="admonition note"> <p class=admonition-title>Note</p> <p>Body Params</p> <p><em>ids</em> <code>array of strings</code></p> <ul> <li> <p>list of transaction hash identifiers for which information is requested. </p> </li> <li> <p>All transactions from the pool will be returned if ids is empty or if this parameter is omitted</p> </li> </ul> </div> <h2 id=20-get_pool_txs_brief_details>20. <em>get_pool_txs_brief_details</em><a class=headerlink href=#20-get_pool_txs_brief_details title="Permanent link">&para;</a></h2> <p><code>GET</code> http://127.0.0.1:52521/json_rpc/#020</p> <ul> <li>Returns brief information for transactions currently in the pool.</li> </ul> <p><strong>REQUEST</strong></p> <div class=highlight><pre><span></span><code>curl --data &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;id\&quot;:0,\&quot;method\&quot;:\&quot;get_pool_txs_brief_details\&quot;}&quot; -H &quot;content-type:application/json;&quot; http://127.0.0.1:52521/json_rpc
+</code></pre></div> <p><strong>RESPONSE</strong></p> <ul> <li>Requestiong all transactions <code>application/json</code></li> </ul> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: 0,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;status&quot;: &quot;OK&quot;,
+    &quot;txs&quot;: [
+      {
+        &quot;fee&quot;: 10000000000,
+        &quot;id&quot;: &quot;5864f3e061c70b47d4ea6a47e593aad66bb2462fa4036be2cd3dfede9faa7583&quot;,
+        &quot;sz&quot;: 57913,
+        &quot;total_amount&quot;: 500000000000000
+      }
+    ]
+  }
+}
+</code></pre></div> <ul> <li>Requestion specific transactions <code>text/plain</code></li> </ul> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: 0,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;status&quot;: &quot;OK&quot;,
+    &quot;txs&quot;: [
+      {
+        &quot;fee&quot;: 100000,
+        &quot;id&quot;: &quot;5e7ce042556717c4b31b0c3dc744042289bfc058cf669f75ce76a48ca3f75bfd&quot;,
+        &quot;sz&quot;: 310,
+        &quot;total_amount&quot;: 49900000
+      }
+    ]
+  }
+}
+</code></pre></div> <ul> <li> <p>Outputs:</p> <p><code>txs</code> — array of tx_rpc_brief_info objects.</p> <ul> <li> <p>tx_rpc_brief_info object's fields:</p> <p><code>fee</code> — unsigned int; transaction fee. <code>id</code> — string; hash identifier. <code>sz</code> — unsigned int; size of serialized transaction in bytes (the same as blob_size in tx_rpc_extended_info). <code>total_amount</code> — unsigned int; sum of all transaction outputs.</p> </li> </ul> </li> </ul> <div class="admonition note"> <p class=admonition-title>Note</p> <p>Body Params</p> <p><em>ids</em> <code>array of strings</code></p> <ul> <li> <p>list of transaction hash identifiers for which information is requested. </p> </li> <li> <p>All transactions from the pool will be returned if ids is empty or if this parameter is omitted.</p> </li> </ul> </div> <h2 id=21-get_all_pool_tx_list>21. <em>get_all_pool_tx_list</em><a class=headerlink href=#21-get_all_pool_tx_list title="Permanent link">&para;</a></h2> <p><code>GET</code> http://127.0.0.1:52521/json_rpc/#021</p> <ul> <li>Returns IDs for all txs in the pool.</li> </ul> <p><strong>REQUEST</strong></p> <div class=highlight><pre><span></span><code>curl --data &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;id\&quot;:0,\&quot;method\&quot;:\&quot;get_all_pool_tx_list\&quot;}&quot; -H &quot;content-type:application/json;&quot; http://127.0.0.1:52521/json_rpc
+</code></pre></div> <p><strong>RESPONSE</strong></p> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: 0,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;ids&quot;: [
+      &quot;07af9af51abace52c6c9f5e96eac1f4123e56d8d2b2e1ac2ba5c6d68be94680f&quot;,
+      &quot;968d44f9443b067debc4a467174ad5b640690e165a2f8d45b2904d082bc1312e&quot;
+    ],
+    &quot;status&quot;: &quot;OK&quot;
+  }
+}
+</code></pre></div> <ul> <li> <p>Outputs:</p> <p><code>ids</code> — array of strings; list of hash identifiers for all transactions that are currently in the pool.</p> </li> </ul> <h2 id=22-get_main_block_details>22. <em>get_main_block_details</em><a class=headerlink href=#22-get_main_block_details title="Permanent link">&para;</a></h2> <p><code>GET</code> http://127.0.0.1:52521/json_rpc/#022</p> <ul> <li>Returns block details for a specified identifier. Only for main chain blocks.</li> </ul> <p><strong>REQUEST</strong></p> <div class=highlight><pre><span></span><code>curl --data &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;id\&quot;:0,\&quot;method\&quot;:\&quot;get_main_block_details\&quot;,\&quot;params\&quot;:{\&quot;id\&quot;:\&quot;0036D628535E31969BCABCA15BFC9ED7B7FB5B0A0CE88E7F84A299EC22EF1539\&quot;}}&quot; -H &quot;content-type:application/json;&quot; http://127.0.0.1:52521/json_rpc
+</code></pre></div> <p><strong>RESPONSE</strong></p> <ul> <li>Normal request <code>application/json</code></li> </ul> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: 0,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;block_details&quot;: {
+      &quot;actual_timestamp&quot;: 1558707712,
+      &quot;already_generated_coins&quot;: &quot;17540409000000000000&quot;,
+      &quot;base_reward&quot;: 1000000000000,
+      &quot;blob&quot;: &quot;&quot;,
+      &quot;block_cumulative_size&quot;: 0,
+      &quot;block_tself_size&quot;: 0,
+      &quot;cumulative_diff_adjusted&quot;: &quot;47789840156373229&quot;,
+      &quot;cumulative_diff_precise&quot;: &quot;29013538618324661&quot;,
+      &quot;difficulty&quot;: &quot;1852005064583&quot;,
+      &quot;effective_fee_median&quot;: 100000000,
+      &quot;height&quot;: 23206,
+      &quot;id&quot;: &quot;0036d628535e31969bcabca15bfc9ed7b7fb5b0a0ce88e7f84a299ec22ef1539&quot;,
+      &quot;is_orphan&quot;: false,
+      &quot;miner_text_info&quot;: &quot;&quot;,
+      &quot;object_in_json&quot;: &quot;...&quot;,
+      &quot;penalty&quot;: 0,
+      &quot;pow_seed&quot;: &quot;&quot;,
+      &quot;prev_id&quot;: &quot;83474d142764e00b033ae10c1c3697e526b1e7331743012122f3dfb365dbe792&quot;,
+      &quot;summary_reward&quot;: 1000000000000,
+      &quot;this_block_fee_median&quot;: 0,
+      &quot;timestamp&quot;: 1558707712,
+      &quot;total_fee&quot;: 0,
+      &quot;total_txs_size&quot;: 0,
+      &quot;transactions_details&quot;: [
+        {
+          &quot;amount&quot;: 1000000000000,
+          &quot;blob&quot;: &quot;&quot;,
+          &quot;blob_size&quot;: 100,
+          &quot;fee&quot;: 0,
+          &quot;id&quot;: &quot;1f05b64404c05f028df9ae780abb5c0119c7f4df96d81002922bb67b1ebaa79d&quot;,
+          &quot;keeper_block&quot;: 23206,
+          &quot;object_in_json&quot;: &quot;&quot;,
+          &quot;pub_key&quot;: &quot;61c2122faf0854a2b6988859f693c1d6435055114e73f2a80ec1196035a044b9&quot;,
+          &quot;timestamp&quot;: 1558707712
+        }
+      ],
+      &quot;type&quot;: 1
+    },
+    &quot;status&quot;: &quot;OK&quot;
+  }
+}
+</code></pre></div> <ul> <li>Request a NON-existing block <code>text/plain</code></li> </ul> <div class=highlight><pre><span></span><code>{
+  &quot;error&quot;: {
+    &quot;code&quot;: -14,
+    &quot;message&quot;: &quot;the requested block has not been found&quot;
+  },
+  &quot;id&quot;: 0,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;
+}
+</code></pre></div> <ul> <li> <p>Outputs:</p> <p><code>block_details</code> — block_rpc_extended_info object; see get_blocks_details method for more details.</p> </li> </ul> <div class="admonition note"> <p class=admonition-title>Note</p> <p>Body Params</p> <p><em>id</em> <code>string</code> required</p> <ul> <li>hash identifier for a block.</li> </ul> </div> <h2 id=23-get_alt_block_details>23. <em>get_alt_block_details</em><a class=headerlink href=#23-get_alt_block_details title="Permanent link">&para;</a></h2> <p><code>GET</code> http://127.0.0.1:52521/json_rpc/#023</p> <ul> <li>Returns block details for a specified identifier. Only for blocks in alternative chains.</li> </ul> <p><strong>REQUEST</strong></p> <div class=highlight><pre><span></span><code>curl --data &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;id\&quot;:0,\&quot;method\&quot;:\&quot;get_alt_block_details\&quot;,\&quot;params\&quot;:{\&quot;id\&quot;:\&quot;5391963EB274AF8391FA89BC711122B5DB9B6C3703CB8865D45505F919F9842B\&quot;}}&quot; -H &quot;content-type:application/json;&quot; http://127.0.0.1:52521/json_rpc
+</code></pre></div> <p><strong>RESPONSE</strong></p> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: 0,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;block_details&quot;: {
+      &quot;actual_timestamp&quot;: 1558705296,
+      &quot;already_generated_coins&quot;: &quot;0&quot;,
+      &quot;base_reward&quot;: 1000000000000,
+      &quot;blob&quot;: &quot;&quot;,
+      &quot;block_cumulative_size&quot;: 0,
+      &quot;block_tself_size&quot;: 0,
+      &quot;cumulative_diff_adjusted&quot;: &quot;47701129767973676&quot;,
+      &quot;cumulative_diff_precise&quot;: &quot;12602457701330728735458&quot;,
+      &quot;difficulty&quot;: &quot;2053263042953598309&quot;,
+      &quot;effective_fee_median&quot;: 0,
+      &quot;height&quot;: 23138,
+      &quot;id&quot;: &quot;5391963eb274af8391fa89bc711122b5db9b6c3703cb8865d45505f919f9842b&quot;,
+      &quot;is_orphan&quot;: true,
+      &quot;miner_text_info&quot;: &quot;1.0.31[29c0487]&quot;,
+      &quot;object_in_json&quot;: &quot;...&quot;,
+      &quot;penalty&quot;: 0,
+      &quot;pow_seed&quot;: &quot;&quot;,
+      &quot;prev_id&quot;: &quot;62c3d7a0a2f7d253b78a8e48dc0407e7d8f0d26b4fdb8b52687b07a7c4020ba9&quot;,
+      &quot;summary_reward&quot;: 1000000000000,
+      &quot;this_block_fee_median&quot;: 0,
+      &quot;timestamp&quot;: 1558705800,
+      &quot;total_fee&quot;: 0,
+      &quot;total_txs_size&quot;: 0,
+      &quot;transactions_details&quot;: [
+        {
+          &quot;amount&quot;: 2000000000000,
+          &quot;blob&quot;: &quot;&quot;,
+          &quot;blob_size&quot;: 203,
+          &quot;extra&quot;: [
+            {
+              &quot;datails_view&quot;: &quot;&quot;,
+              &quot;short_view&quot;: &quot;7eaeb2490d85b17773b30ffe9f32fce50a1e89ee5ed258531e6b66ae13b00327&quot;,
+              &quot;type&quot;: &quot;pub_key&quot;
+            },
+            {
+              &quot;datails_view&quot;: &quot;312e302e33315b323963303438375d&quot;,
+              &quot;short_view&quot;: &quot;15 bytes&quot;,
+              &quot;type&quot;: &quot;user_data&quot;
+            },
+            {
+              &quot;datails_view&quot;: &quot;&quot;,
+              &quot;short_view&quot;: &quot;0 bytes&quot;,
+              &quot;type&quot;: &quot;extra_padding&quot;
+            },
+            {
+              &quot;datails_view&quot;: &quot;cefd&quot;,
+              &quot;short_view&quot;: &quot;cefd&quot;,
+              &quot;type&quot;: &quot;XOR&quot;
+            },
+            {
+              &quot;datails_view&quot;: &quot;&quot;,
+              &quot;short_view&quot;: &quot;height: 23148&quot;,
+              &quot;type&quot;: &quot;unlock_time&quot;
+            },
+            {
+              &quot;datails_view&quot;: &quot;&quot;,
+              &quot;short_view&quot;: &quot;timestamp: 1558705296 Fri, 24 May 2019 13:41:36 GMT&quot;,
+              &quot;type&quot;: &quot;pos_time&quot;
+            }
+          ],
+          &quot;fee&quot;: 0,
+          &quot;id&quot;: &quot;a88f4ae2a89d5cbf9a76946785b6b45e898177cc0acd0b9c6ec5e35ccd73d9e8&quot;,
+          &quot;ins&quot;: [
+            {
+              &quot;amount&quot;: 0,
+              &quot;kimage_or_ms_id&quot;: &quot;&quot;,
+              &quot;multisig_count&quot;: 0
+            },
+            {
+              &quot;amount&quot;: 1000000000000,
+              &quot;global_indexes&quot;: [
+                32159
+              ],
+              &quot;kimage_or_ms_id&quot;: &quot;5125de7598e723efba04d83258f31a3b30b21ed036f8e52b0669b12b93264267&quot;,
+              &quot;multisig_count&quot;: 0
+            }
+          ],
+          &quot;keeper_block&quot;: 0,
+          &quot;object_in_json&quot;: &quot;&quot;,
+          &quot;outs&quot;: [
+            {
+              &quot;amount&quot;: 1000000000000,
+              &quot;global_index&quot;: 0,
+              &quot;is_spent&quot;: false,
+              &quot;minimum_sigs&quot;: 0,
+              &quot;pub_keys&quot;: [
+                &quot;6acb06f7e4916d38ecafb537065e4dedaf0949fd49787fad55256770eaa8b029&quot;
+              ]
+            },
+            {
+              &quot;amount&quot;: 1000000000000,
+              &quot;global_index&quot;: 0,
+              &quot;is_spent&quot;: false,
+              &quot;minimum_sigs&quot;: 0,
+              &quot;pub_keys&quot;: [
+                &quot;c5179786faf5fe9f0d2adfcf6c9b069aae0e1393b771efddef8efade4bb4ce73&quot;
+              ]
+            }
+          ],
+          &quot;pub_key&quot;: &quot;7eaeb2490d85b17773b30ffe9f32fce50a1e89ee5ed258531e6b66ae13b00327&quot;,
+          &quot;timestamp&quot;: 1558705296
+        }
+      ],
+      &quot;type&quot;: 0
+    },
+    &quot;status&quot;: &quot;OK&quot;
+  }
+}
+</code></pre></div> <ul> <li> <p>Outputs:</p> <p><code>block_details</code> — block_rpc_extended_info object; see get_blocks_details method for more details.</p> </li> </ul> <div class="admonition note"> <p class=admonition-title>Note</p> <p>Body Params</p> <p><em>id</em> <code>string</code> required</p> <ul> <li>hash identifier for a block.</li> </ul> </div> <h2 id=24-get_alt_blocks_details>24. <em>get_alt_blocks_details</em><a class=headerlink href=#24-get_alt_blocks_details title="Permanent link">&para;</a></h2> <p><code>GET</code> http://127.0.0.1:52521/json_rpc/#024</p> <ul> <li>Returns alternative blocks details for a specified range.</li> </ul> <p><strong>REQUEST</strong></p> <div class=highlight><pre><span></span><code>curl --data &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;id\&quot;:0,\&quot;method\&quot;:\&quot;get_alt_blocks_details\&quot;,\&quot;params\&quot;:{\&quot;offset\&quot;:0,\&quot;count\&quot;:2}}}&quot; -H &quot;content-type:application/json;&quot; http://127.0.0.1:52521/json_rpc
+</code></pre></div> <p><strong>RESPONSE</strong></p> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: 0,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;blocks&quot;: [{
+      &quot;actual_timestamp&quot;: 1537462404,
+      &quot;already_generated_coins&quot;: 0,
+      &quot;base_reward&quot;: 0,
+      &quot;blob&quot;: &quot;&quot;,
+      &quot;block_cumulative_size&quot;: 0,
+      ....
+    },{
+      &quot;actual_timestamp&quot;: 1537462619,
+      &quot;already_generated_coins&quot;: 0,
+      &quot;base_reward&quot;: 0,
+      &quot;blob&quot;: &quot;&quot;,
+      &quot;block_cumulative_size&quot;: 0,
+      ....
+    }],
+    &quot;status&quot;: &quot;OK&quot;
+  }
+}
+</code></pre></div> <ul> <li> <p>Outputs:</p> <p><code>blocks</code> — array of block_rpc_extended_info objects; see get_blocks_details method for more details.</p> </li> </ul> <div class="admonition note"> <p class=admonition-title>Note</p> <p>Body Params</p> <p><em>offset</em> <code>int32</code> required</p> <ul> <li>starting offset in the global list of alternative blocks</li> </ul> <p><em>count</em> <code>int32</code> required</p> <ul> <li>number of blocks to be requested</li> </ul> </div> <h2 id=25-reset_transaction_pool>25. <em>reset_transaction_pool</em><a class=headerlink href=#25-reset_transaction_pool title="Permanent link">&para;</a></h2> <p><code>POST</code> http://127.0.0.1:52521/json_rpc/#025</p> <ul> <li>Clears the transaction pool.</li> </ul> <p><strong>REQUEST</strong></p> <div class=highlight><pre><span></span><code>curl --data &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;id\&quot;:0,\&quot;method\&quot;:\&quot;reset_transaction_pool\&quot;}&quot; -H &quot;content-type:application/json;&quot; http://127.0.0.1:52521/json_rpc
+</code></pre></div> <p><strong>RESPONSE</strong></p> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: 0,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;status&quot;: &quot;OK&quot;
+  }
+}
+</code></pre></div> <h2 id=26-get_current_core_tx_expiration_median>26. <em>get_current_core_tx_expiration_median</em><a class=headerlink href=#26-get_current_core_tx_expiration_median title="Permanent link">&para;</a></h2> <p><code>GET</code> http://127.0.0.1:52521/json_rpc/#026</p> <ul> <li>Returns the median for timestamps of the last 20 blocks. Displayed as returned median value plus 600 seconds, this is used to check the expiration time of parameters.</li> </ul> <p><strong>REQUEST</strong></p> <div class=highlight><pre><span></span><code>curl --data &quot;{\&quot;jsonrpc\&quot;:\&quot;2.0\&quot;,\&quot;id\&quot;:0,\&quot;method\&quot;:\&quot;get_current_core_tx_expiration_median\&quot;}&quot; -H &quot;content-type:application/json;&quot; http://127.0.0.1:52521/json_rpc
+</code></pre></div> <p><strong>RESPONSE</strong></p> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: 0,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;expiration_median&quot;: 1537465582,
+    &quot;status&quot;: &quot;OK&quot;
+  }
+}
+</code></pre></div> <ul> <li> <p>Outputs:</p> <p><code>expiration_median</code> — unsigned int; median value.</p> </li> </ul> <h2 id=27-marketplace_global_get_offers_ex>27. <em>marketplace_global_get_offers_ex</em><a class=headerlink href=#27-marketplace_global_get_offers_ex title="Permanent link">&para;</a></h2> <p><code>GET</code> http://127.0.0.1:52521/json_rpc/#027</p> <ul> <li>This main marketplace API, which lets to read "offers" from EvoX blockchain. It has diverse filters, which let specify particular parameters of the request and help organize effective communication on production.</li> </ul> <div class="admonition note"> <p class=admonition-title>Note</p> <p>Activate "Offers service" in daemon to use this API</p> <ul> <li>To make daemon work with this API make sure you started daemon with <code>--enable_offers_service</code> command line parameter</li> </ul> </div> <ul> <li>This main marketplace API method, which lets to read "offers" created and managed by given wallet. It has diverse filters, which let specify particular parameters of the request and help organize effective communication on production. </li> <li>More detailed specification of the filter fields provided in <a href=/api/marketplace-filter-structure-and-description/ > " Filter " </a> structure defintion.</li> <li>Result returned as an array of <code>Offer</code> objects, which is described in <a href=/api/marketplace-offer-structure-and-description/ > " Offer " </a> structure.</li> </ul> <p><strong>REQUEST</strong></p> <div class=highlight><pre><span></span><code>curl --request GET \
+     --url &#39;http://127.0.0.1:52521/json_rpc/#027&#39; \
+     --header &#39;Accept: application/json&#39;
+</code></pre></div> <p><strong>RESPONSE</strong></p> <ul> <li>Response OK <code>application/json</code></li> </ul> <div class=highlight><pre><span></span><code>{
+  &quot;id&quot;: 0,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;offers&quot;: [
+      {
+        &quot;ap&quot;: &quot;20&quot;,
+        &quot;at&quot;: &quot;1&quot;,
+        &quot;b&quot;: &quot;&quot;,
+        &quot;cat&quot;: &quot;CLS:MAN:TSH&quot;,
+        &quot;cnt&quot;: &quot;Skype: some_skype, discord: some_user#01012&quot;,
+        &quot;com&quot;: &quot;Some nice comments about tshirt&quot;,
+        &quot;do&quot;: &quot;Additional conditions&quot;,
+        &quot;et&quot;: 10,
+        &quot;fee&quot;: 10000000000,
+        &quot;index_in_tx&quot;: 0,
+        &quot;lci&quot;: &quot;&quot;,
+        &quot;lco&quot;: &quot;World Wide&quot;,
+        &quot;ot&quot;: 1,
+        &quot;p&quot;: &quot;USD&quot;,
+        &quot;pt&quot;: &quot;Credit cards, BTC, EVOX, ETH&quot;,
+        &quot;security&quot;: &quot;0000000000000000000000000000000000000000000000000000000000000000&quot;,
+        &quot;t&quot;: &quot;T-shirt with Evox logo, made by Crypjunkie&quot;,
+        &quot;timestamp&quot;: 1570219600,
+        &quot;tx_hash&quot;: &quot;6ba12c5d2c66d31f770bfdc88ae9dc90d007b9b33f946fc7c1d9750f8655331c&quot;,
+        &quot;tx_original_hash&quot;: &quot;0000000000000000000000000000000000000000000000000000000000000000&quot;
+      },
+      {
+        &quot;ap&quot;: &quot;20&quot;,
+        &quot;at&quot;: &quot;1&quot;,
+        &quot;b&quot;: &quot;&quot;,
+        &quot;cat&quot;: &quot;CLS:MAN:TSH&quot;,
+        &quot;cnt&quot;: &quot;Skype: some_skype, discord: some_user#01012&quot;,
+        &quot;com&quot;: &quot;Some nice comments about tshirt&quot;,
+        &quot;do&quot;: &quot;Additional conditions&quot;,
+        &quot;et&quot;: 10,
+        &quot;fee&quot;: 10000000000,
+        &quot;index_in_tx&quot;: 0,
+        &quot;lci&quot;: &quot;&quot;,
+        &quot;lco&quot;: &quot;World Wide&quot;,
+        &quot;ot&quot;: 1,
+        &quot;p&quot;: &quot;USD&quot;,
+        &quot;pt&quot;: &quot;Credit cards, BTC, EVOX, ETH&quot;,
+        &quot;security&quot;: &quot;0000000000000000000000000000000000000000000000000000000000000000&quot;,
+        &quot;t&quot;: &quot;T-shirt with Evox logo, made by Crypjunkie&quot;,
+        &quot;timestamp&quot;: 1570219840,
+        &quot;tx_hash&quot;: &quot;2987b671cc337203628a3a1bb7ac811e41f110864d6162d3c2276d2c79f694d6&quot;,
+        &quot;tx_original_hash&quot;: &quot;0000000000000000000000000000000000000000000000000000000000000000&quot;
+      }
+    ],
+    &quot;status&quot;: &quot;&quot;,
+    &quot;total_offers&quot;: 0
+  }
+}
+</code></pre></div> <ul> <li>Response BAD <code>application/json</code></li> </ul> <div class=highlight><pre><span></span><code>{}
+</code></pre></div> </article> </div> </div> </main> <footer class=md-footer> <nav class="md-footer__inner md-grid" aria-label=Footer> <a href=../../crypto-dictionar/ class="md-footer__link md-footer__link--prev" aria-label="Previous: Crypto Definitions" rel=prev> <div class="md-footer__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg> </div> <div class=md-footer__title> <div class=md-ellipsis> <span class=md-footer__direction> Previous </span> Crypto Definitions </div> </div> </a> <a href=../daemon-legacy-rpc-api/ class="md-footer__link md-footer__link--next" aria-label="Next: Daemon Legacy PRC API" rel=next> <div class=md-footer__title> <div class=md-ellipsis> <span class=md-footer__direction> Next </span> Daemon Legacy PRC API </div> </div> <div class="md-footer__button md-icon"> <svg xmlns=http://www.w3.org/2000/svg viewbox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg> </div> </a> </nav> <div class="md-footer-meta md-typeset"> <div class="md-footer-meta__inner md-grid"> <div class=md-copyright> <div class=md-copyright__highlight> © 2022 EvolutionDocs under <a href=https://opensource.org/licenses/MIT>MIT</a> </div> Made with <a href=https://squidfunk.github.io/mkdocs-material/ target=_blank rel=noopener> Material for MkDocs </a> </div> </div> </div> </footer> </div> <div class=md-dialog data-md-component=dialog> <div class="md-dialog__inner md-typeset"></div> </div> <script id=__config type=application/json>{"base": "../..", "features": [{"navigation.sections": false}, {"toc.integrate": false}, {"navigation.indexes": false}], "search": "../../assets/javascripts/workers/search.b028fd86.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script> <script src=../../assets/javascripts/bundle.f758a944.min.js></script> </body> </html>

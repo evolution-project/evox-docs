@@ -35,6 +35,14 @@ nav:
     - Frequently Asked Questions: 'faq/faq.md'
 - Crypto Dictionar:
     - Crypto Definitions: 'crypto-dictionar.md'
+- API Detailed:
+    - Daemon RPC API: 'api/daemon-rpc-api.md'
+    - Daemon Legacy PRC API: 'api/daemon-legacy-rpc-api.md'
+    - Daemon Binary RPC API: 'api/daemon-binary-rpc-api.md'
+    - Wallet JSON RPC API: 'api/wallet-json-rpc-api.md'
+    - Marketplace offer structure and description: 'api/marketplace-offer-structure-and-description.md'
+    - MarketPlace filter structure and description: 'api/marketplace-filter-structure-and-description.md'
+
 
 
 #theme: windmill
