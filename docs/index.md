@@ -5,11 +5,11 @@
 
 <br>
 
-With more then 2 years from when the project was start, Evolution evolve a loot thanks to community and EvoX Dev team.
+With more then 2 years from when the project was start, Evolution has evolved a lot thanks to community and EvoX Dev team.
 
-With this EvoX Dev team wants to say Thank You All for support all this years, and a special Thanks for the support that was given to me by 2 good persons, A and M.
+EvoX Devs would like to say Thank You all for the continuing support over the years. And a special thanks for the support that was given to me by 2 good persons, A and M.
 
-Is a project that was born from passion and learning, it was made to make crypto popular and learning about it but at the same time aim to be secure and private coin.
+Evolution a project that was born from passion and learning, it was made to make crypto popular and learning about it but at the same time aim to be secure and private coin.
 
 Evolution is a private, secure, untraceable, decentralised digital currency. 
 
