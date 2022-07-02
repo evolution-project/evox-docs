@@ -109,3 +109,15 @@ your wallet again. Your wallet keys is NOT under risk anyway.
         * When sending coins from an auditable address the sender address is always hidden.
         * When sending coins to an auditable address the receiver address is always hidden.
         Once the blockchain passed hardfork 2 these limitations were removed.
+
+### **Can I use integrated addresses with the auditable feature ?**
+
+* Yes. An integrated address for an auditable wallet can be generated as usual. Addresses will have `aiEX` prefix.
+
+### **Can I mine PoS with my auditable wallet ?**
+
+* Yes, you can. 
+
+* Also, you can use a corresponding watch-only wallet to monitor your balance without the risk of leaking your spend key. 
+
+* The only tradeoff is you can not use mixins but only directly spend coins from your auditable wallet.

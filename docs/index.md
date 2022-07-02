@@ -1,9 +1,10 @@
 
 # Evolution Network - EvoX 2.0
 
-## Hybrid, Secure, Scalable, Privacy
+| [Home Page](https://evolution-network.org) | [BlockChain Explorer](https://explorer.evolution-network.org) | [GitHub](https://github.com/evolution-project) |
+[Discord](https://discord.gg/erYnAQf) | [Twitter](https://twitter.com/Evolution_EvoX) | [Telegram]( https://t.me/EvoxNetwork) | [Forum](https://evolutionproject.medium.com/) |
 
-<br>
+# Hybrid, Secure, Scalable, Privacy
 
 With more then 2 years from when the project was start, Evolution has evolved a lot thanks to community and EvoX Dev team.
 
@@ -17,7 +18,7 @@ You are your bank, you control your funds, your coins dont leave your wallet, an
 
 With a Hybrid Blockchain PoW + PoS and high level of security added by the PoS plus scalability that was need it this days and a privacy level of transactions make from EvoX 2.0 a better coin that was before and more stabile and secure
 
-<br><br><br><br><br>
+<br>
 
 * Evolution Docs attempts to organize basic technical knowledge of Evolution in one place.
 

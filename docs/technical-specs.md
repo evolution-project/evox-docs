@@ -3,22 +3,20 @@ title: Evolution Technical Specification
 ---
 # Evolution Technical Specs
 
-|                              | **Coin Specification** |                                                          |
-| ---------------------------- |                        |--------------------------------------------------------- |
-| **Currencie Name**           |    _   | Evolution                                                                |
-| **Ticker**                   |    _   | EVOX                                                                     |
-| **PoW Algorithm**            |    _   | ProgPowZ - GPU (optimised) + CPU mining                                  |
-| **Hybrid Blockchain**        |    _   | PoW + PoS                                                                |
-| **Block Time**               |    _   | 60 sec PoW / PoS (may vary)
-| **Block Reward**             |    _   | 1 EvoX - PoS / PoW                                                       |
-| **Network Fee**              |    _   | 0.01 EvoX - Fixed                                                        |
-| **Minimum Network Fee / TX** |    _   | 0.01 EvoX - Fixed                                                        |
-| **Decimal Points**           |    _   | `1e-12` or 0.000000000001                                                |
-| **Maximum Supply**           |    _   | ∞ infinite supply                                                        |
-| **Development Reserved**     |    _   | 100000 EvoX, 70000 spend on development till now.                        |
-| **Website**                  |    _   | [Evolution-Network.org](https://evolution-network.org)                   |
-| **BlockChain Explorer**      |    _   | [Explorer.Evolution-Network.org](https://explorer.evolution-network.org) |
-| **GitHub**                   |    _   | [EvoX GitHub](https://github.com/evolution-project)                      |
+|                              | **Coin Specification** |                                                   |
+| ---------------------------- |                        |-------------------------------------------------- |
+| **_Currencie Name_**         |    _                   | Evolution                                         |
+| **_Ticker_**                 |    _                   | EVOX                                              |
+| **_PoW Algorithm_**          |    _                   | ProgPowZ - GPU (optimised)                        |
+| **_Hybrid Blockchain_**      |    _                   | PoW + PoS                                         |
+| **_Block Time_**             |    _                   | 60 sec PoW / PoS (may vary)                       |
+| **_Block Reward_**           |    _                   | 1 EvoX - PoS / PoW                                |
+| **_Network Fee_**            |    _                   | 0.01 EvoX - Fixed                                 |
+| **_Minimum Network Fee_**    |    _                   | 0.01 EvoX - Fixed                                 |
+| **_Decimal Points_**         |    _                   | `1e-12` or 0.000000000001                         |
+| **_Maximum Supply_**         |    _                   | ∞ infinite supply                                 |
+| **_Development Reserved_**   |    _                   | 100000 EvoX, 70000 spend on development till now. |
+| **_PoW / PoS Distribution_** |    _                   | Block Reward distribution is 50% PoW - 50% PoS    |
 
 ### **_Live_**
 
@@ -27,24 +25,24 @@ title: Evolution Technical Specification
 
 ### **_Hybrid_**
 
-* _PoS_ - Proof of Stake
-* _PoW_ - Proof of Work
-* _PoW Algorithm_ : ProgpowZ
+- _PoS_ - Proof of Stake
+- _PoW_ - Proof of Work
+- _Privacy_
+- _Scalable_
+- _Secure_
+- _P2P Contracts_
+- _Multisig_
+- _Alias_
+- _Auditable Wallet_
+
 
 ### **_Sender Privacy_**
 
 * _Ring Signatures_
     * The ring size is 11 (10 decoys)
-    * Private by default and Audible wallets
+    * Private by default
 
-### **_Recipient Privacy_**
+* _Recipient Privacy_
 
-* Stealth Addresses
-* Assurance: _strong_
-
-### **_Amount Privacy_**
-
-* Ring Confidential Transactions _(ringCT)_
-* Assurance: _strong_
-
-
+    * Stealth Addresses
+    * Assurance: _strong_
