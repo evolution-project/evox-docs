@@ -1,6 +1,5 @@
 ## Crypto Dictionar
 
-* These crypto definitions will help you in your whitepaper research. We will update the crypto dictionary with new terms regularly!
 
 ### **51% Attack**
 

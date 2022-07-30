@@ -21,7 +21,7 @@ title: Evolution Technical Specification
 ### **_Live_**
 
 * _Evolution 1.0 blockchain is live since: Timestamp [UCT] (epoch) 2020-03-02 21:31:47 (1583184707) and END at..._
-* _Evolution 2.0 blockchain started: ......_
+* _Evolution 2.0 blockchain started: Timestamp [UTC] 2022.07.26 18:34:01
 
 ### **_Features_**
 

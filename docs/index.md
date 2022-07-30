@@ -22,8 +22,6 @@ With a Hybrid Blockchain PoW + PoS and high level of security added by the PoS p
 
 * Evolution Docs attempts to organize basic technical knowledge of Evolution in one place.
 
-* The goal is to educate and onboard power users faster.
-
 * Please submit your feedback and corrections directly on [GitHub](https://github.com/evolution-project/evox-docs/issues).
 
 * Contact ArtFix [ artfix@protonmail.com ]
