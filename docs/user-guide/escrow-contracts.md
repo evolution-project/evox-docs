@@ -65,3 +65,36 @@
 
 * If buyer is satisfied with the delivery or a provided service the contract can be closed. 
 * Releasing deposits will return both parties collaterals.
+
+<BR>
+
+## **More Detail ESCROW CONTRACT**
+
+* Using escrow system, the both parties are asked to offer an agreed upon number of coins as collateral.
+* This amount can be custom for each person, it depends on how much the users think is the risk for each side.
+* Collateral coins will be returned to each user back after the deal is done and confirmed by both sides. 
+* If a users don't agree and try to scam in escrow, the coins are burned.
+* Using the Contract system build in EvoX app any user will keep his anonimity.
+
+![Image title](/images/p2p-escrow.png) 
+
+* Alice wants to buy a item from Bob for 100 EVOX
+* Alice make a Contract in total of 300 EVOX that transfers from both Alice and Bob. First key is for Alice and second for Bob.
+* All Alice Contract details will be encrypted and visible only for Bob.
+* This data type was described above as transaction attachments and while the hash of the attachment will be verifiable indefinitely on the blockchain, 
+the actual attachment data will fall off after passing checkpoints to manage blockchain bloat as this information at some point in the future loses its relevance. 
+For example, the shipping details including name, address etc. on a package you received a year ago is no longer relevant.
+* Alice adds 200 EVOX and sends the Contract proposal transaction to Bob for him to review.
+* Bob receive the Contract notification, read it and if is agree he put 100 EVOX, after this Contract start and all coins from both patry are locked.
+* Now Bob can sends Alice items and wait for response.
+* Alice satisfied with the order, finish the Contract witch unlock 100 EVOX and send back to Alice and 200 EVOX send to Bob. Contract Complete.
+* Other version is:
+    1. Alice send the items back to Bob, refuse the Contract both get their money back.
+    2. Alice keeps the broken items ask for compensation and both share the money 50/50
+* In case of scam and anyone breaks the escrow Contract:
+	1. Bob don't send the items.
+	2. Alice receive the items but refuse to complete Contract and don't unlock the money.
+* Both party will lose more then it should receive:
+	1. Bob lose 100 EVOX.
+	2. Alice pays 2 times the money for items.
+* `CONCLUSION :` No party will be intrested to scam, and both will try to successfuly complete Contract
