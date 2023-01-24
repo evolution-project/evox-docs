@@ -5,7 +5,7 @@
 * Of course, it’s important to estimate your chances and predict how much you can earn in some way. 
 * Here is the most straightforward way to do so.
 
-    * First, we need to get the current PoS difficulty, which can be found in the [Block Explorer](https://explorer.evolution-network.org). 
+    * First, we need to get the current PoS difficulty, which can be found in the [Block Explorer](https://chain.evolution-network.org). 
         * This value is then divided by `1000000000000 (10 ^ 12)` , which in the EvoX network is one coin basis.
 
     * Second, we again divide it by `288`. 

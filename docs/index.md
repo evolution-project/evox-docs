@@ -1,7 +1,7 @@
 
 # Evolution Network - EvoX 2.0
 
-| [Home Page](https://evolution-network.org) | [BlockChain Explorer](https://explorer.evolution-network.org) | [GitHub](https://github.com/evolution-project) |
+| [Home Page](https://evolution-network.org) | [BlockChain Explorer](https://chain.evolution-network.org) | [GitHub](https://github.com/evolution-project) |
 [Discord](https://discord.gg/erYnAQf) | [Twitter](https://twitter.com/Evolution_EvoX) | [Telegram]( https://t.me/EvoxNetwork) | [Forum](https://evolutionproject.medium.com/) |
 
 # Hybrid, Secure, Scalable, Privacy
